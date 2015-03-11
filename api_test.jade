@@ -1,0 +1,13 @@
+head
+	title Page
+body
+	form.form
+		input(type="text" name='name').name
+		input(type='submit' value='Send').send
+	each summoners
+		+summoner
+template(name="summoner")
+	ul
+		li {{fullName}}
+		li {{profileIcon}}
+		li {{_id}}
