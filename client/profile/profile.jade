@@ -1,0 +1,27 @@
+template(name="profile")
+	.profile
+		if currentUser
+			.profile__header(style="background-image: url('{{image}}')")
+				img(src='/avatar/{{name}}.png').profile__header__avatar
+				.profile__header__info
+					.profile__header__info__name {{name}}
+				.profile__header__controls
+					.profile__header__controls__change
+			.profile__body
+				.profile__body__info
+					.profile__body__info__game
+						h3.profile__body__title Ingame info
+						.profile__body__info__game__basic
+							p.profile__body__info__game__basic__username summoner name
+							p.profile__body__info__game__basic__level Level 30
+						.profile__body__info__game__tier
+		else
+			+login
+	.profile__modal__change
+		.profile__modal__change__header
+			h3.profile__modal__change__header__title Mudar imagem
+			a(href="").profile__modal__change__header__close
+		.profile__modal__change__body
+			label.profile__modal__change__body__label URL da imagem
+			input(type='text').profile__modal__change__body__input
+			button.profile__modal__change__body__save Aterar

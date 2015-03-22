@@ -9,3 +9,8 @@ autopublish
 insecure
 http
 mquandalle:jade
+stylus
+accounts-base
+accounts-password
+jquery
+iron:router

@@ -1,0 +1,32 @@
+template(name="aside")
+	aside.content__side
+		.content__side__header
+		.content__side__links
+			.content__side__links__item
+				img(src="/icons/home.png").content__side__links__item__icon
+				a(href="#").content__side__links__item__link Home
+			.content__side__links__item
+				img(src="/icons/matchs.png").content__side__links__item__icon
+				a(href="#").content__side__links__item__link Matchs
+			.content__side__links__item
+				img(src="/icons/search.png").content__side__links__item__icon
+				a(href="#").content__side__links__item__link Search
+		.content__side__search
+			form.content__side__search__form
+				input(type="text" placeholder='Nome de Invocador').content__side__search__form__input
+				a(href="").content__side__search__form__btn
+		.content__side__featured
+			.content__side__featured__header
+				h3.content__side__featured__header__title Destaques
+			.content__side__featured__players
+				+player
+				+player
+				+player
+				+player
+					
+template(name="player")
+	.content__side__featured__players__player
+		img(src='http://lpuboosting.com/img/general/ranks/challenger.png').content__side__featured__players__player__icon
+		p.content__side__featured__players__player__name Player Name
+		a(href="").content__side__featured__players__player__history Histórico
+		a(href="").content__side__featured__players__player__match Partida

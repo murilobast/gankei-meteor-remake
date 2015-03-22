@@ -1,0 +1,23 @@
+template(name="header")
+	header.header
+		.header__menu
+			img(src="http://cdn.flaticon.com/png/64/60/60510.png").header__menu__icon
+		.header__logo
+			h1.header__logo__title Gankei
+		.header__profile
+			if currentUser
+				//- .header__profile__username
+				//- 	p.header__profile__username__text {{name}}
+				.header__profile__avatar
+					a(href='/profile/{{name}}')
+						img(src="/avatar/{{name}}.png").header__profile__avatar__img
+				//- .header__profile__logout
+				//- 	img(src="/icons/logout.png").header__profile__logout__icon
+			else
+				.header__profile__login
+					a(href='/profile/{{name}}')
+						.header__profile__login__header
+							p.header__profile__login__header__title Login
+							img(src='/icons/login.png').header__profile__login__header__icon
+					.header__profile__login__dropdown
+						.header__profile__login__dropdown__form

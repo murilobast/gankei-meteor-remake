@@ -1,0 +1,22 @@
+template(name="home")
+	.content__body__home
+		.content__body__home__article
+			.content__body__home__article__header
+				h3.content__body__home__article__header__title Free Week
+			.content__body__home__article__body
+				.content__body__home__article__body__freeweek
+					each freeweek
+						+freeWeekChampion
+
+		.content__body__home__article
+			.content__body__home__article__header
+				h3.content__body__home__article__header__title Wu Kong
+			.content__body__home__article__body
+				p.content__body__home__article__body__text Lorem ipsum dolor sit amet, ius perfecto tractatos deseruisse at, ne tale constituto liberavisse per, paulo audire intellegebat pri in. No definiebas accommodare ius. Eum te aeterno nostrum. Ea scripta oporteat cum, pri an dictas graecis oporteat, an sed simul legendos. Esse wisi liber ut duo, vix cu sonet ancillae fastidii, et atqui vidisse alienum vis. Usu noster reprimique at. Vis legere putant adipiscing no, solum iudico eam no.
+				img(src='/images/1.jpg').content__body__home__article__body__image--large
+				p.content__body__home__article__body__text Mel eu primis inciderint. Mei fabulas albucius cu, ne eam everti imperdiet. His homero ubique ei, eu vim splendide assueverit. Te essent vulputate mea. Te eam adhuc consequat, insolens invenire ei sed, nonumy lucilius an quo.
+
+template(name="freeWeekChampion")
+	.content__body__home__article__body__freeweek__champ
+		img(src="https://ddragon.leagueoflegends.com/cdn/5.5.1/img/champion/{{_id}}.png").content__body__home__article__body__freeweek__champ__img
+		p.content__body__home__article__body__freeweek__champ__name {{_id}}

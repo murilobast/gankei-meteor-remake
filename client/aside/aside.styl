@@ -1,0 +1,107 @@
+@import '../vars-mixins'
+
+.content__side
+	width 230px
+	position fixed
+	top 0px
+	bottom 0
+	float left
+	background $dark-grey
+	transition(margin 0.4s)
+	z-index 10
+	margin-left -230px
+	overflow auto
+	&__header
+		background $red
+		height 64px
+		width 100% 
+	&__links
+		clear both 
+		width 100%
+		&__item
+			background $red
+			border-bottom 1px solid $border-grey
+			height 48px
+			transition(all, 0.2s)
+			&:hover
+				background  $grey
+				transition(all, 0.2s)
+			&__icon
+				width 32px
+				margin 8px
+				float left
+			&__link
+				float left
+				display block
+				width 182px
+				height 48px
+				line-height 48px
+				color $white
+				font-weight 400
+	&__search
+		height 120px
+		&__form
+			height 40px
+			padding 40px 20px
+			&__input
+				height inherit
+				width 150px
+				float left
+				background $dark-grey
+				border 2px solid $border-grey
+				outline none
+				color $light-grey
+				text-align center
+			&__btn
+				background $light-grey
+				height 40px
+				width 40px
+				float left
+				background-image url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-search-strong-128.png)
+				background-size 60%
+				background-repeat no-repeat
+				background-position center
+	&__featured
+		padding 0 20px
+		&__header
+			height 30px
+			&__title
+				color $grey-white
+				font-size 16px 
+				font-weight 400 
+				line-height 30px
+		&__players
+			padding-top 10px
+			&__player
+				height 48px 
+				border-bottom 1px solid $border-grey
+				&__icon
+					margin 4px 0
+					width 40px
+					float left
+					border-radius(100%)
+					background $grey
+				&__name
+					color $light-grey
+					font-size 14px 
+					width 150px
+					height 22px 
+					line-height 22px
+					text-align center
+					overflow hidden
+					float left
+				&__history, &__match
+					float left
+					width 65px
+					margin 5px
+					color $grey-white
+					font-size 10px  
+					text-align center
+					line-height 15px 
+				&__history			
+					background #009688
+				&__match
+					background #03A9F4
+@media (min-width: 1200px) and (max-width: 1450px)
+	.content__side
+		margin-left 0

@@ -1,0 +1,1 @@
+FreeWeek = new Mongo.Collection('freweek');
