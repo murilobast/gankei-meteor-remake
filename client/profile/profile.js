@@ -1,10 +1,4 @@
 Template.profile.helpers({
-	name: function(){
-		return Meteor.user().username;
-	},
-	image: function(){
-		return Meteor.user().profile.image;
-	}
 })
 
 Template.profile.events({
