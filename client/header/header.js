@@ -5,7 +5,6 @@ Template.header.helpers({
 })
 Template.header.events({
 	'click .header__menu': function(e, t){
-		side = t.find('.content__side');
 		var side = $('.content__side');
 		if (side.css('margin-left') == '0px'){
 			side.css('margin-left', '-230px');
