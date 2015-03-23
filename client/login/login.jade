@@ -1,12 +1,14 @@
 template(name="login")
-	form(id="login-form")
-		div
-			input(type="username" id="login-username")
-			input(type="password" id="login-password")
-			input(type="submit" id="login-button" value="Login")
-	form(id="register-form")
-		div
-			input(type="username" id="account-username")
-			input(type="password" id="account-password")
-			input(type="email" id="account-email")
-			input(type="submit" id="create-account" value="Register")
+	form#login-form.login
+		//p.login__title Login	
+		input(type="username" placeholder='Usuário')#login-username.login__field
+		input(type="password" placeholder='Senha')#login-password.login__field
+		button(type="submit")#login-button.login__btn.login Efetuar login
+		button()#login-button.login__btn.register Criar conta
+	
+	//- form(id="register-form")
+	//- 	div
+	//- 		input(type="username" id="account-username")
+	//- 		input(type="password" id="account-password")
+	//- 		input(type="email" id="account-email")
+	//- 		input(type="submit" id="create-account" value="Register")

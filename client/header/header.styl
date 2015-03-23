@@ -33,12 +33,11 @@
 		float right
 		overflow hidden 
 		transition(all, 0.2s)
-		&:hover
-			height 164px
 		&__avatar
 			border-left 1px solid $border-grey
 			float left
 			width 64px
+			cursor pointer
 			&__img
 				width 42px
 				margin 11px 
@@ -51,20 +50,11 @@
 				line-height 64px
 				text-align center
 				vertical-align center
-		&__logout
-			height inherit
-			float right
-			width 48px
-			border-left 1px solid $border-grey
-			text-align center
-			&__icon
-				width 20px
-				margin 22px 0
-				display inline-block
 		&__login
 			padding 0 10px
 			float right
 			height 64px
+			cursor pointer
 			&__header
 				height 64px
 				text-align center
@@ -78,3 +68,53 @@
 				&__title
 					float left
 					line-height 64px
+	&__modal
+		width 180px
+		height 0px
+		overflow hidden 
+		background $white
+		border 1px solid $border-grey
+		border-top none
+		position absolute
+		z-index 10
+		right 0
+		top 64px
+		padding 0 10px
+		transition(height 0.2s)
+		&__name
+			text-transform capitalize 
+			font-weight 600 
+		&__links
+			& *
+				transition(color 0.4s)
+				text-align center
+				color $dark-grey
+				display block
+				height 20px
+				line-height 20px
+				font-size 16px 
+				&:hover
+					color $red
+		.login
+			&__title
+				font-weight 600
+				text-align left
+				line-height 20px
+				height 20px
+			&__field
+				height 24px
+				line-height 24px
+				margin 5px 0   
+				padding 0 5px
+				width 100% 
+			&__btn
+				margin-bottom 5px
+				padding 5px 10px
+				width 100% 
+				border solid 1px $border-grey
+				color $white
+			.login
+				background #03a9f4
+			.register
+				background $red
+				margin-bottom 10px

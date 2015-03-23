@@ -6,18 +6,20 @@ template(name="header")
 			h1.header__logo__title Gankei
 		.header__profile
 			if currentUser
-				//- .header__profile__username
-				//- 	p.header__profile__username__text {{name}}
 				.header__profile__avatar
-					a(href='/profile/{{username}}')
-						img(src="/avatar/{{username}}.png").header__profile__avatar__img
-				//- .header__profile__logout
-				//- 	img(src="/icons/logout.png").header__profile__logout__icon
+					img(src="/avatar/{{username}}.png").header__profile__avatar__img
 			else
 				.header__profile__login
-					a(href='/profile/login')
-						.header__profile__login__header
-							p.header__profile__login__header__title Login
-							img(src='/icons/login.png').header__profile__login__header__icon
-					.header__profile__login__dropdown
-						.header__profile__login__dropdown__form
+					.header__profile__login__header
+						p.header__profile__login__header__title Login
+						img(src='/icons/login.png').header__profile__login__header__icon
+
+		.header__modal
+			if currentUser
+				p.header__modal__name {{username}}
+				.header__modal__links
+					a(href='/profile/{{username}}').header__modal__links__profile Perfil
+					a().header__modal__links__changepass Mudar Senha
+					a(href='').header__modal__links__logout Deslogar
+			else
+				+login
