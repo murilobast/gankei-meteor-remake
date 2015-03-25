@@ -1,5 +1,83 @@
+@import '../vars-mixins'
+
 .addPost
+	depth(1)
 	border-radius(2px)
-	background $white
-	padding 10px 20px
+	overflow hidden
+	background #fff
 	margin-bottom 20px
+	padding 10px 20px
+	&__title
+		height 36px
+		line-height 36px
+		font-size 18px 
+	&__field
+		height 30px
+		margin-bottom 10px
+		&__label
+			height 30px
+			line-height 30px
+			padding 0 10px
+		&__input
+			border 1px solid $border-grey
+			border-radius(2px)
+			padding 0 5px
+			width 300px
+			outline none
+			font-weight 600 
+			color $red
+	&__add
+		depth(1)
+		border-radius(2px)
+		display block
+		width 80% 
+		margin 10px auto
+		padding 5px 10px
+		border solid 1px $border-grey
+		background $light-teal 
+		color $white
+		transition(all 0.4s)
+		outline none
+		&:hover
+			depth(2)
+	&__modal
+		depth(3)
+		border-radius(2px)
+		background $white
+		padding 10px
+		width 300px
+		height 90px
+		position absolute
+		top -1600px
+		bottom 1px
+		left 1px
+		right 1px
+		margin auto
+		text-align center
+		transition(all 0.4s)
+		&__text
+			height 30px
+			line-height 30px
+		&__btn
+			depth(1)
+			border-radius(2px)
+			transition(all 0.4s)
+			line-height 40px
+			margin 0 10px
+			padding 5px 10px
+			background black
+			&:hover
+				depth(2)
+		&__btn.confirm
+			background $light-teal
+		&__btn.cancel
+			background $red
+			
+	.note-editor
+		border solid 1px $border-grey
+		border-radius(2px)
+		background $grey-white
+		margin-bottom 20px
+	
+	
+	

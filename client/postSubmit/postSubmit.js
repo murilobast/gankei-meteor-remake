@@ -1,7 +1,8 @@
 Meteor.subscribe('img');
+
 Template.postSubmit.rendered = function() {
   var template = this;
-  $('.addPost').summernote({
+  $('.addPost__editor').summernote({
     height: 400,
     maxHeight:800,
     minHeight:250,
@@ -20,3 +21,21 @@ Template.postSubmit.rendered = function() {
     }
   });
 };
+
+Template.postSubmit.events({
+  'click .addPost__add': function (e, t) {
+    $('.addPost__modal').css('top', '1px');
+  },
+  'click .addPost__modal .confirm': function (e, t) {
+    var title = t.find('.addPost__field__input').value;
+    var data = t.find('.note-editable').innerHTML;
+    var data = data.split('<p><br></p>').join('')
+    var post = {
+      title: title,
+      data: data,
+      date: new Date()
+    };
+    $('.addPost__modal').css('top', '-1600px');
+    Meteor.call('addPost', post);
+  }
+});

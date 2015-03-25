@@ -6,8 +6,10 @@ template(name="posts")
 template(name="post")
 	.content__body__home__article
 		.content__body__home__article__header
-			h3.content__body__home__article__header__title Wu Kong
+			h3.content__body__home__article__header__title {{title}}
+			p.content__body__home__article__header__date {{compactDate}}
 		.content__body__home__article__body
-			p.content__body__home__article__body__text {{text}}
-			img(src='/images/1.jpg').content__body__home__article__body__image--large
-			p.content__body__home__article__body__text Mel eu primis inciderint. Mei fabulas albucius cu, ne eam everti imperdiet. His homero ubique ei, eu vim splendide assueverit. Te essent vulputate mea. Te eam adhuc consequat, insolens invenire ei sed, nonumy lucilius an quo.
+			| {{{data}}}
+		button.content__body__home__article__btn.remove Remover
+		button.content__body__home__article__btn.edit Editar
+		button.content__body__home__article__btn.comment Comentarios

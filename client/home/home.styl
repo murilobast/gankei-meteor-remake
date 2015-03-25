@@ -2,22 +2,37 @@
 
 .content__body__home
 	&__article
+		depth(1)
 		border-radius(2px)
 		background $white
 		padding 10px 20px
 		margin-bottom 20px
 		&__header
-			height 30px
+			height 46px
 			&__title
-				font-size 16px 
+				text-align left
+				font-size 18px 
 				font-weight 600 
+				line-height 20px
+			&__date 
+				color $light-grey
+				line-height 26px
+				padding-left 5px
 		&__body
-			&__text
+			padding-bottom 10px
+			border-bottom 1px solid $border-grey
+			p
+				text-align center
 				color $grey
 				font-size 14px
-				padding-bottom 10px
-			&__image--large
-				width 100%
+				margin 10px 0
+			img
+				border-radius(2px)
+				margin 0 auto
+				display block
+				width 100% !important
+				max-width 1080px 
+				min-width 300px
 				padding-bottom 10px
 			&__freeweek
 				width 100%

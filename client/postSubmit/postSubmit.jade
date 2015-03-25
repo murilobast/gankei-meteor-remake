@@ -1,3 +1,12 @@
 template(name="postSubmit")
 	.addPost
-	a(src='https://github.com/CollectionFS/Meteor-CollectionFS/issues/489') link
+		label.addPost__title Adicionar conteúdo
+		.addPost__field
+			label.addPost__field__label Titúlo
+			input.addPost__field__input(type='text')
+		.addPost__editor
+		button(type="").addPost__add Publicar conteúdo
+		.addPost__modal
+			p.addPost__modal__text Confirmar envio?
+			a.addPost__modal__btn.confirm Confirmar
+			a.addPost__modal__btn.cancel Cancelar

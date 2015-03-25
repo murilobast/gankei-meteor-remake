@@ -18,8 +18,10 @@ Meteor.methods({
 	'updateUserImage': function(id, url){ 
 		Meteor.users.update({_id: id}, {$set: {'profile.image': url}});
 	},
-	'getPosts': function(){
-
-		return Posts.find();
+	'addPost': function(post){
+		Posts.insert(post);
+	},
+	'removePost': function(id){
+		Posts.remove(id);
 	}
 })
