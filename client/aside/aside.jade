@@ -30,3 +30,16 @@ template(name="player")
 		p.content__side__featured__players__player__name Player Name
 		a(href="").content__side__featured__players__player__history Histórico
 		a(href="").content__side__featured__players__player__match Partida
+
+template(name="right")
+	aside.content__right
+		.content__right__header
+		.content__right__user
+			if currentUser
+				.content__right__user__header
+				a(href='/profile/{{username}}') {{username}} 
+				.content__right__user__links
+					.content__side__links__link
+						a(href='').content__side__links__link__logout Logout
+			else
+				+login

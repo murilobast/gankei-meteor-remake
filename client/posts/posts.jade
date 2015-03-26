@@ -6,7 +6,7 @@ template(name="posts")
 template(name="post")
 	.content__body__home__article
 		.content__body__home__article__header
-			h3.content__body__home__article__header__title {{title}}
+			a(href='/post/{{_id}}').content__body__home__article__header__title {{title}}
 			p.content__body__home__article__header__date {{compactDate}}
 		.content__body__home__article__body
 			| {{{data}}}

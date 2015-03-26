@@ -7,11 +7,12 @@
 	-moz-box-sizing border-box 
 	box-sizing border-box 
 	position relative
+	user-select(none)
 body
 	background #ECEFF1
 	a, a:hover, a:active
 		text-decoration none 
-		color white
+		color black
 	p, a, h1, h2, h3, h4, h5, label
 		margin 0
 		padding 0
@@ -19,17 +20,11 @@ body
 .content__body
 	padding 20px
 	top 64px
-	@media (min-width: 320px) and (max-width: 560px)
+	@media (min-width: 320px) and (max-width: 1050px)
 		padding 10px
-	@media (min-width: 320px) and (max-width: 1199px)
-		width 100%
-		max-width 1200px
-		margin auto 
-	@media (min-width: 1200px) and (max-width: 1650px)
+	@media (min-width: 1051px)
 		position absolute
 		left 230px
 		right 0
-	@media (min-width: 1651px)
-		width 100%
-		max-width 1200px
-		margin auto 
+	@media (min-width: 1451px)
+		right 230px

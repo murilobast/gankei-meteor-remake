@@ -8,7 +8,7 @@
 	float left
 	background $dark-grey
 	depth(1)
-	transition(margin 0.4s)
+	transition(margin 0.2s)
 	z-index 10
 	margin-left -230px
 	overflow auto
@@ -104,6 +104,24 @@
 					background #009688
 				&__match
 					background #03A9F4
-@media (min-width: 1200px) and (max-width: 1450px)
+@media (min-width: 1051px)
 	.content__side
 		margin-left 0
+.content__right
+	width 230px
+	position fixed
+	top 0px
+	bottom 0
+	float left
+	background $dark-grey
+	depth(1)
+	transition(margin 0.2s)
+	z-index 10
+	margin-right -230px
+	overflow auto
+	right 0
+	background $white
+	&__header
+		background $red
+		height 64px
+		width 100% 

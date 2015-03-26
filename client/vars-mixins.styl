@@ -26,6 +26,37 @@ depth(level)
 		box-shadow 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
 	if level == 5
 		box-shadow 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)
+user-select()
+	-webkit-user-select arguments
+	-moz-user-select arguments
+	-ms-user-select arguments
+	user-select arguments
+transform()
+	-webkit-transform arguments 
+	-moz-transform arguments 
+	-ms-transform arguments 
+	-o-transform arguments 
+	transform arguments 
+line()
+	display inline-block
+	width 28px
+	height 4px
+	background $dark-grey
+	border-radius(2px)
+	transition 0.4s
+modal()
+	position fixed
+	top 1px
+	bottom 1px
+	right 1px
+	left 1px
+	margin auto
+	overflow hidden  
+	border-radius(2px)
+	z-index 100
+	depth(5)
+	padding 10px
+	background $white
 
 //Vars
 $white = #fff
@@ -33,6 +64,8 @@ $grey-white = #eee
 $red = #ff5252
 
 $light-teal = #009688
+
+$blue = #03A9F4
 
 $dark-grey = #263238
 $grey = #37474F

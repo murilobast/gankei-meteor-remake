@@ -1,7 +1,9 @@
 template(name="profile")
 	.profile
 		.profile__header(style="background-image: url('{{image}}')")
-			img(src='/avatar/{{name}}.png').profile__header__avatar
+			.profile__header__avatar
+				img(src='{{avatar}}').profile__header__avatar__img
+				a(href="").profile__header__avatar__edit
 			.profile__header__info
 				.profile__header__info__name {{name}}
 			.profile__header__controls
@@ -15,12 +17,17 @@ template(name="profile")
 					//- 	p.profile__body__info__game__basic__username summoner name
 					//- 	p.profile__body__info__game__basic__level Level 30
 					//- .profile__body__info__game__tier
+		+crop
 
-	.profile__modal__change
-		.profile__modal__change__header
-			h3.profile__modal__change__header__title Mudar imagem
-			a(href="").profile__modal__change__header__close
-		.profile__modal__change__body
-			label.profile__modal__change__body__label URL da imagem
-			input(type='text').profile__modal__change__body__input
-			button.profile__modal__change__body__save Aterar
+template(name="crop")
+	.profile__modal__avatar
+		.profile__modal__avatar__header
+			h3.profile__modal__avatar__header__title Alterar avatar
+		.profile__modal__avatar__body
+			label(for='avatar').profile__modal__avatar__body__label Selecionar imagem!
+			input(type="file")#avatar.profile__modal__avatar__body__upload
+			.profile__modal__avatar__body__crop
+				img(src="{{avatar}}").profile__modal__avatar__body__crop__img
+			.profile__modal__avatar__body__btn
+				button.profile__modal__avatar__body__btn__save Aterar
+				button.profile__modal__avatar__body__btn__cancel Cancelar

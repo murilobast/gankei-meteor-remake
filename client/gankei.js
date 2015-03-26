@@ -15,6 +15,13 @@ Router.route('/user/:server/:name', function(){
 	});
 })
 
+Router.route('/post/:postId', function(){
+	this.render('fullPost', {
+		data: {
+			postId: this.params.postId
+		}
+	});
+})
 Router.route('/profile/:_id', function(){
 	if (this.params._id == 'login'){
 		if (! Meteor.userId()) {

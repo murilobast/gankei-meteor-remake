@@ -7,7 +7,6 @@ Template.posts.helpers({
 Template.post.helpers({
 	compactDate: function(){
 		var date = Posts.findOne(this._id).date;
-		console.log(date);
 		var month = date.getUTCMonth() + 1; //months from 1-12
 		var day = date.getUTCDate();
 		var year = date.getUTCFullYear();

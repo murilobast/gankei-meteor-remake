@@ -13,9 +13,30 @@
 			width 150px
 			margin-left 30px
 			bottom -15%
-			border-radius(5px)
+			border-radius(3px)
 			border 5px solid $border-grey
 			z-index 1
+			overflow hidden
+			&__img
+				width 100%
+			&__edit
+				background-image url('/icons/edit.png')
+				bottom 5px
+				right 5px
+				width 32px
+				height 32px 
+				filter(invert(100%))
+				position absolute
+				background-size 80%
+				background-position center
+				background-repeat no-repeat
+				background-color $light-grey
+				depth(1)
+				border-radius(100%)
+				opacity 0.6
+				transition(all 0.5s)
+				&:hover
+					opacity 1  
 		&__info
 			height 30px
 			background $transp-grey
@@ -74,56 +95,61 @@
 				margin-left 130px
 
 
-.profile__modal__change
+.profile__modal__avatar
 	transition(all 1s)
-	display none
-	opacity 0
-	width 400px
-	background $white
-	z-index 100
-	position absolute
-	top 50%
-	left 0
-	right 0
-	margin auto   
-	box-shadow 0 17px 50px 0 rgba(0, 0, 0, 0.19), 0 12px 15px 0 rgba(0, 0, 0, 0.24)
-	border-radius(2px)
-	overflow hidden 
+	modal()
+	height 420px
+	max-width 400px
+	width 90% 
+	min-width 240px
+	top -3000px
+	transition(all 0.4s)
+	padding-top 0
 	&__header
-		height 30px
-		background $dark-grey
 		&__title
 			font-size 16px
-			font-weight 400
+			font-weight 600
 			line-height 30px
-			padding-left 10px
-			width 370px
-			float left
-			color $white
-		&__close
-			width 30px
-			float left 
-			height 30px    
-			background-image url('/icons/close.png')
-			background-size 80%
-			background-repeat no-repeat
-			background-position center 
-			filter(invert(1))
+			color $dark-grey
 	&__body
-		padding 10px
 		&__label
-			display block
-			width 100%
-			margin-bottom 10px
-		&__input
-			width 100% 
-		&__save
-			padding 5px 10px
+			line-height 30px
+			background $light-teal
 			color $white
-			border none
-			background #03A9F4
-			font-size 16px 
-			margin 10px auto
-			margin-bottom 0
-			display block
+			padding 0 10px
+			border-radius(2px)
+			depth(1)
+			transition(all 0.4s)
+			cursor pointer
+			margin-bottom 10px
+			&:hover
+				depth(2)
+		&__upload
+			visibility hidden
+			height 0px
+		&__crop
+			height 300px
+			&__img
+				height 300px
+				margin 0 auto
+				display block
+		&__btn
+			text-align center
+			&__save, &__cancel
+				border none
+				line-height 30px
+				color $white
+				padding 0 10px
+				border-radius(2px)
+				depth(1)
+				transition(all 0.4s)
+				cursor pointer
+				margin 10px 20px
+				display inline-block
+				&:hover
+					depth(2)
+			&__cancel
+				background $red 
+			&__save
+				background $blue
 			

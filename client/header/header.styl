@@ -9,21 +9,53 @@
 	z-index 100
 	depth(1)
 	&__menu
-		cursor pointer
-		width 48px
-		height inherit 
 		float left
-		border-right 1px solid $border-grey
-		padding 19px 11px
-		z-index 1
-		@media (min-width: 1200px) and (max-width: 1450px)
-			display none
-		&__icon
-			width 24px
+		border none
+		background transparent 
+		z-index 1 
+		display inline-block
+		height 64px
+		width 48px
+		transition(all 0.6s)
+		cursor pointer
+		border-radius(2px)
+		outline none
+		&:hover
+			opacity 1 
+			.lines
+				&:before
+					top 8px
+				&:after
+					top -8px
+		.lines
+			line()
+			position relative
+			&:before, &:after
+				line()
+				position absolute
+				left 0
+				content ''
+				transform-origin: 2px center
+			&:before
+				top 7px
+			&:after
+				top -7px
+	&__menu.isOpen
+		transform(scale(.8))
+		.lines
+			transform(rotate(360deg))
+			&:before, &:after
+				top 0
+				width 20px
+			&:before
+				transform(rotate3d(0,0,1,40deg))
+			&:after
+				transform(rotate3d(0,0,1,-40deg))
 	&__logo
 		height inherit
 		width 120px
 		float left
+		border-left 1px solid $border-grey
 		&__title
 			font-size 24px 
 			line-height 64px

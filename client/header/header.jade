@@ -1,25 +1,17 @@
 template(name="header")
 	header.header
-		.header__menu
-			img(src="http://cdn.flaticon.com/png/64/60/60510.png").header__menu__icon
+		button.header__menu(type="button" role="button" aria-label="Toggle Navigation")
+			span.lines
+
+
 		.header__logo
 			h1.header__logo__title Gankei
 		.header__profile
 			if currentUser
 				.header__profile__avatar
-					img(src="/avatar/{{username}}.png").header__profile__avatar__img
+					img(src="{{avatar}}").header__profile__avatar__img
 			else
 				.header__profile__login
 					.header__profile__login__header
-						p.header__profile__login__header__title Login
+						a(href="").header__profile__login__header__title Login
 						img(src='/icons/login.png').header__profile__login__header__icon
-
-		.header__modal
-			if currentUser
-				p.header__modal__name {{username}}
-				.header__modal__links
-					a(href='/profile/{{username}}').header__modal__links__profile Perfil
-					a().header__modal__links__changepass Mudar Senha
-					a(href='').header__modal__links__logout Deslogar
-			else
-				+login

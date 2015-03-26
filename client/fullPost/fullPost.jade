@@ -1,0 +1,30 @@
+template(name="fullPost")
+	each postData
+		.content__body__article
+			.content__body__article__header
+				h3.content__body__article__header__title {{title}}
+				p.content__body__article__header__date {{compactDate}}
+			.content__body__article__body
+				| {{{data}}}
+			.content__body__article__comments
+				.content__body__article__comments__add
+					if currentUser
+						label.content__body__article__comments__add__label Comentários
+						textarea(placeholder="Insira um texto...").content__body__article__comments__add__textarea
+						a(href="").content__body__article__comments__add__btn Comentar
+					else
+						label.content__body__article__comments__add__labe Você precisa estar logado para poder comentar!
+				.content__body__article__comments__list
+					each comments
+						+comment
+
+template(name="comment")
+	.comment
+		.comment__left
+			img(src="{{avatar}}").comment__left__avatar
+			p(src="").comment__left__username {{body}}
+		.comment__right
+			p.comment__right__text
+		.footer
+			.like
+			.dislike
