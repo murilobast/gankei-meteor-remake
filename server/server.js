@@ -37,13 +37,9 @@ Meteor.methods({
 	},
 	uploadAvatar: function(image){
 		Avatar.insert(image, function (err, fileObj) {
-          if (err){
-             // handle error
-          } else {
-             // handle success depending what you need to do
+          if (!err){
             var userId = Meteor.userId();
             var imagesURL = '/cfs/files/avatar/' + fileObj._id;
-            console.log(fileObj);
             Meteor.users.update(userId, {$set: {'profile.avatar': imagesURL}});
           }
         });
