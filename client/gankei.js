@@ -16,6 +16,10 @@ Router.route('/user/:server/:name', function(){
 	});
 })
 
+Router.route('/add', function(){
+	this.render('postAdd');
+})
+
 Router.route('/post/:postId', function(){
 	this.render('fullPost', {
 		data: {

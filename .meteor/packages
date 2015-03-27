@@ -13,7 +13,7 @@ accounts-base
 accounts-password
 jquery
 iron:router
-summernote:summernote
 cfs:standard-packages
 cfs:filesystem
 jonblum:jquery-cropper
+froala:editor
