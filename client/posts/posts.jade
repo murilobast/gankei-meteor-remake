@@ -10,6 +10,9 @@ template(name="post")
 			p.content__body__home__article__header__date {{compactDate}}
 		.content__body__home__article__body
 			| {{{data}}}
-		button.content__body__home__article__btn.remove Remover
-		button.content__body__home__article__btn.edit Editar
-		button.content__body__home__article__btn.comment Comentarios
+		a(href='').content__body__home__article__btn.remove Remover
+		a(href='/edit/{{_id}}' target='_top').content__body__home__article__btn.edit Editar
+		a(href='').content__body__home__article__btn.comment Comentarios
+
+template(name="editor")
+	.editor

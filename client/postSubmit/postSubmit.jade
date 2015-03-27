@@ -1,12 +1,29 @@
 template(name="postSubmit")
-	.addPost
-		label.addPost__title Adicionar conteúdo
+	.editPost
+		label.editPost__title Adicionar conteúdo
 		.addPost__field
-			label.addPost__field__label Titúlo
+			label.addPost__field__label Título
 			input.addPost__field__input(type='text')
 		.addPost__editor
 		button(type="").addPost__add Publicar conteúdo
+
 		.addPost__modal
 			p.addPost__modal__text Confirmar envio?
 			a.addPost__modal__btn.confirm Confirmar
 			a.addPost__modal__btn.cancel Cancelar
+
+
+template(name="postEdit")
+	| {{getPost}}
+	.editPost
+		label.editPost__title Editar conteúdo
+		.editPost__field
+			label.editPost__field__label Título
+			input.editPost__field__input(type='text')
+		.editPost__editor
+		button(type="").editPost__edit Editar conteúdo
+
+		.editPost__modal
+			p.editPost__modal__text Confirmar envio?
+			a.editPost__modal__btn.confirm Confirmar
+			a.editPost__modal__btn.cancel Cancelar

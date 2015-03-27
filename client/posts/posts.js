@@ -1,3 +1,6 @@
+Template.editor.rendered = function () {
+	$('.editor').summernote();
+};
 Template.posts.helpers({
 	posts: function () {
 		return Posts.find({}, {sort: {date: 'desc'}, limit: 10 });

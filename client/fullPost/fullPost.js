@@ -27,9 +27,15 @@ Template.fullPost.helpers({
 	comments: function(){
 		console.log(this._id);
 		return Comments.find({'postId': this._id});
+	}
+})
+Template.comment.helpers({
+	user: function(){
+		var user = Meteor.users.find(this.owner);
+		return user;
 	},
-	avatar: function(){
-		return Meteor.user.find(this.owner);
+	owner: function(){
+		return Meteor.userId() == this.owner; //|| is admin
 	}
 })
 

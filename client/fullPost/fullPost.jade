@@ -13,18 +13,24 @@ template(name="fullPost")
 						textarea(placeholder="Insira um texto...").content__body__article__comments__add__textarea
 						a(href="").content__body__article__comments__add__btn Comentar
 					else
-						label.content__body__article__comments__add__labe Você precisa estar logado para poder comentar!
+						label.content__body__article__comments__add__label Você precisa estar logado para poder comentar!
 				.content__body__article__comments__list
 					each comments
 						+comment
 
 template(name="comment")
 	.comment
-		.comment__left
-			img(src="{{avatar}}").comment__left__avatar
-			p(src="").comment__left__username {{body}}
-		.comment__right
-			p.comment__right__text
-		.footer
+		.comment__body
+			each user
+				.comment__body__left
+					img(src="{{profile.avatar}}").comment__body__left__avatar
+				.comment__body__right
+					a(href="/profile/{{username}}" target='_top').comment__body__right__username {{username}}
+			p.comment__body__right__text {{body}}
+		.comment__footer
+			.comment__footer__buttons
+				if owner
+					a(href="").comment__footer__buttons__edit Editar
+					a(href="").comment__footer__buttons__remove Deletar
 			.like
 			.dislike

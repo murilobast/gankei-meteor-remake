@@ -1,13 +1,14 @@
 template(name="profile")
 	.profile
-		.profile__header(style="background-image: url('{{image}}')")
+		.profile__header(style="background-image: url('{{profile.image}}')")
 			.profile__header__avatar
-				img(src='{{avatar}}').profile__header__avatar__img
-				a(href="").profile__header__avatar__edit
+				img(src='{{profile.avatar}}').profile__header__avatar__img
+				if isOwner
+					a(href="").profile__header__avatar__edit
 			.profile__header__info
 				.profile__header__info__name {{name}}
 			.profile__header__controls
-				if currentUser
+				if isOwner
 					.profile__header__controls__change
 		.profile__body
 			.profile__body__info

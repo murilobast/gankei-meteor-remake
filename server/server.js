@@ -29,6 +29,9 @@ Meteor.methods({
 	'addPost': function(post){
 		Posts.insert(post);
 	},
+	'editPost': function(id, title, data){
+		Posts.update({_id: id}, {$set: {'title': title, 'data': data}});
+	},
 	'removePost': function(id){
 		Posts.remove(id);
 	},

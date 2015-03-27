@@ -38,6 +38,8 @@
 				line-height 48px
 				color $white
 				font-weight 400
+				&:hover
+					color $white
 	&__search
 		height 100px
 		&__form
@@ -83,6 +85,8 @@
 					float left
 					border-radius(100%)
 					background $grey
+					depth(1)
+					transition(all 0.4s)
 				&__name
 					color $light-grey
 					font-size 14px 
@@ -96,10 +100,19 @@
 					float left
 					width 65px
 					margin 5px
-					color $grey-white
+					color $grey-white !important
 					font-size 10px  
 					text-align center
 					line-height 15px 
+					depth(1)
+					border-radius(2px)
+					display block
+					border solid 1px $border-grey
+					background $light-teal 
+					transition(all 0.2s)
+					&:hover
+						color $grey-white
+						depth(2)
 				&__history			
 					background #009688
 				&__match

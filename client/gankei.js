@@ -1,4 +1,5 @@
 Meteor.subscribe('profile');
+
 Router.route('/', function(){
 	this.render('home');
 })
@@ -22,28 +23,31 @@ Router.route('/post/:postId', function(){
 		}
 	});
 })
-Router.route('/profile/:_id', function(){
-	if (this.params._id == 'login'){
-		if (! Meteor.userId()) {
-		 	this.render('login');
-	 	}else{
-	 		var name = Meteor.user().username;
-			var image = Meteor.user().profile.image;
-			this.render('profile', {
-				data: {
-					name: name,
-					image: image
-				}
-			});
+
+Router.route('/edit/:postId', function(){
+	this.render('postEdit', {
+		data: {
+			postId: this.params.postId
 		}
+	});
+})
+
+Router.route('/profile/:name', function(){
+	var name = this.params.name;
+	if (!Meteor.users.findOne({username: name})){
+		this.render('notFound', {
+			data: {
+				user: true
+			}
+		});
 	}else{
-		var name = this.params._id;
-		var image = Meteor.users.findOne({username: name}).profile.image || '/images/default.jpg';
+		var profile = Meteor.users.findOne({username: name}).profile;
 		this.render('profile', {
 			data: {
 				name: name,
-				image: image
+				profile: profile
 			}
 		});
 	}
+
 })

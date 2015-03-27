@@ -6,8 +6,8 @@ Template.crop.rendered = function () {
 
 //HELPERS
 Template.profile.helpers({
-	avatar: function(){
-		return Meteor.user().profile.avatar || '/avatar/default.png';
+	isOwner: function(){
+		return Meteor.userId() == Meteor.users.findOne({username: this.name})._id;
 	}
 })
 Template.crop.helpers({
@@ -50,18 +50,18 @@ Template.crop.events({
 			}
 			reader.readAsDataURL(image);
 		}
-		//setTimeout(function(){
-		$('.profile__modal__avatar__body__crop > img').cropper({
-			aspectRatio: 1 / 1,
-			autoCropArea: 1,
-			strict: false,
-			guides: true,
-			highlight: true,
-			dragCrop: false,
-			movable: true,
-			resizable: true
-		})
-		//}, 1000);
+		setTimeout(function(){
+			$('.profile__modal__avatar__body__crop > img').cropper({
+				aspectRatio: 1 / 1,
+				autoCropArea: 1,
+				strict: false,
+				guides: true,
+				highlight: true,
+				dragCrop: false,
+				movable: true,
+				resizable: true
+			})
+		}, 1000);
 	},
 	'click .profile__modal__avatar__body__btn__save': function(e, t){
 		var image = $('.profile__modal__avatar__body__crop > img').cropper('getCroppedCanvas').toDataURL();

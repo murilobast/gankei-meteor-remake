@@ -6,6 +6,8 @@
 		border-radius(2px)
 		background $white
 		padding 10px 20px
+		@media (max-width: 540px)
+			padding 10px
 		margin-bottom 20px
 		cursor context-menu
 		&__header
@@ -36,6 +38,9 @@
 				padding-bottom 10px
 		&__comments
 			width 95%
+			@media (max-width: 540px)
+				width 100%
+				margin 0 auto
 			display block
 			margin 10px auto
 			&__add
@@ -54,4 +59,61 @@
 					padding 5px
 					outline none
 					border-radius(2px)
-				
+			.comment
+				margin 20px 10px
+				overflow hidden	
+				depth(1)
+				border-radius(2px)
+				&__body
+					&__left
+						width 100px
+						float left 
+						margin-right 0px
+						margin-bottom -10px
+						&__avatar
+							border-radius(100%)
+							width 80%
+							margin 10%
+					&__right
+						&__text
+							padding 10px
+							text-align justify
+						&__username
+							text-transform capitalize 
+							top 10px
+							margin-bottom 10px
+							font-size 16px 
+							color $grey
+							font-weight 600 
+							transition(color 0.4s)
+							&:hover
+								color $blue
+				&__footer
+					width 100%
+					overflow hidden 
+					clear both
+					&__buttons
+						float left
+						& a
+							float left
+							margin 5px 10px
+							line-height 26px
+							color $white !important
+							height 26px
+							padding 0 10px
+							background $light-teal
+							transition(all 0.4s) 
+							border-radius(2px)
+							depth(1)
+							&:hover
+								depth(2)
+					.like, .dislike
+						width 26px
+						height 26px
+						margin 5px 10px
+						float right
+						background-size contain
+					.like
+						background-image url('/icons/like.svg')
+					.dislike
+						background-image url('/icons/dislike.svg')

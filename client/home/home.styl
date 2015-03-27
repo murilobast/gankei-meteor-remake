@@ -9,15 +9,18 @@
 		margin-bottom 20px
 		cursor context-menu
 		&__header
-			height 46px
 			&__title
 				text-align left
 				font-size 18px 
 				font-weight 600 
 				line-height 20px
+				color $dark-grey
+				transition(all 0.4s)
+				&:hover
+					color $light-grey
 			&__date 
 				color $light-grey
-				line-height 26px
+				line-height 20px
 				text-align right
 		&__body
 			padding-bottom 10px
