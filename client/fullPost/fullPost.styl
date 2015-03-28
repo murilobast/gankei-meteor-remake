@@ -9,7 +9,7 @@
 		@media (max-width: 540px)
 			padding 10px
 		margin-bottom 20px
-		cursor context-menu
+		cursor default
 		&__header
 			&__title
 				text-align left
@@ -75,13 +75,18 @@
 							width 80%
 							margin 10%
 					&__right
+						&__date
+							margin-top 10px
+							margin-bottom -5px
+							color $light-grey
+							font-size 12px
+							display block  
 						&__text
 							padding 10px
 							text-align justify
 						&__username
 							text-transform capitalize 
 							top 10px
-							margin-bottom 10px
 							font-size 16px 
 							color $grey
 							font-weight 600 
@@ -107,12 +112,17 @@
 							depth(1)
 							&:hover
 								depth(2)
+					.likes
+						float right
+						line-height 26px
+						margin 5px 10px
 					.like, .dislike
 						width 26px
 						height 26px
 						margin 5px 10px
 						float right
 						background-size contain
+						cursor pointer
 					.like
 						background-image url('/icons/like.svg')
 					.dislike

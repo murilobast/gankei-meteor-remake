@@ -38,6 +38,14 @@ Meteor.methods({
 	addComment: function(comment){
 		Comments.insert(comment);
 	},
+	removeComment: function(id){
+		Comments.remove(id);
+	},
+	commentLike: function(user, id, add){
+		if (add == true){
+			Comments.update({_id: id}, {$push {whoLike = user}});
+		}
+	}
 	uploadAvatar: function(image){
 		Avatar.insert(image, function (err, fileObj) {
           if (!err){
@@ -46,5 +54,6 @@ Meteor.methods({
             Meteor.users.update(userId, {$set: {'profile.avatar': imagesURL}});
           }
         });
+        return Meteor._reload.reload();
 	}
 })

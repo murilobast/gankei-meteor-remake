@@ -10,7 +10,7 @@ template(name="fullPost")
 				.content__body__article__comments__add
 					if currentUser
 						label.content__body__article__comments__add__label Comentários
-						textarea(placeholder="Insira um texto...").content__body__article__comments__add__textarea
+						textarea(placeholder="Escreva algo...").content__body__article__comments__add__textarea
 						a(href="").content__body__article__comments__add__btn Comentar
 					else
 						label.content__body__article__comments__add__label Você precisa estar logado para poder comentar!
@@ -26,6 +26,7 @@ template(name="comment")
 					img(src="{{profile.avatar}}").comment__body__left__avatar
 				.comment__body__right
 					a(href="/profile/{{username}}" target='_top').comment__body__right__username {{username}}
+			p.comment__body__right__date {{date}}
 			p.comment__body__right__text {{body}}
 		.comment__footer
 			.comment__footer__buttons
@@ -34,3 +35,4 @@ template(name="comment")
 					a(href="").comment__footer__buttons__remove Deletar
 			.like
 			.dislike
+			p.likes 0

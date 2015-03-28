@@ -1,5 +1,6 @@
 Meteor.subscribe('comments');
 
+//HELPERS
 Template.fullPost.helpers({
 	postData: function(){
 		return Posts.find(this.postId);
@@ -26,9 +27,10 @@ Template.fullPost.helpers({
 	},
 	comments: function(){
 		console.log(this._id);
-		return Comments.find({'postId': this._id});
+		return Comments.find({'postId': this._id}, {sort: {date: 'desc'}, limit: 10 });
 	}
 })
+
 Template.comment.helpers({
 	user: function(){
 		var user = Meteor.users.find(this.owner);
@@ -39,6 +41,7 @@ Template.comment.helpers({
 	}
 })
 
+//EVENTS
 Template.fullPost.events({
 	'click .content__body__article__comments__add__btn': function(e, t){
 		var owner = Meteor.userId();
@@ -49,8 +52,23 @@ Template.fullPost.events({
 			owner: owner,
 			postId: postId,
 			body: body,
-			date: date
+			date: date,
+			whoLike: []
 		};
 		Meteor.call('addComment', comment);
+		t.find('.content__body__article__comments__add__textarea').value = '';
 	}
 })
+
+Template.comment.events({
+	'click .comment__footer__buttons__remove': function (e, t) {
+		var id = this._id;
+		Meteor.call('removeComment', id);
+	},
+	'click .like': function(){
+		var id = this._id;
+		var user = this.owner;
+		var add = true;
+		Meteor.call('commentLike', user, id, add);
+	}
+});
