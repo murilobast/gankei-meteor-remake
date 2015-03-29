@@ -6,6 +6,7 @@ Template.home.helpers({
 		return FreeWeek.find();
 	}
 })
+
 Template.home.events({
 
 });

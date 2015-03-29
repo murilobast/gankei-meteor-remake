@@ -1,9 +1,10 @@
 template(name="home")
 	.content__body__home
+		each freeweek
+			+freeWeekChampion
 		+posts
-		
+
 template(name="freeWeekChampion")
 	.content__body__home__article__body__freeweek__champ
 		img(src="https://ddragon.leagueoflegends.com/cdn/5.5.1/img/champion/{{_id}}.png").content__body__home__article__body__freeweek__champ__img
 		p.content__body__home__article__body__freeweek__champ__name {{_id}}
-

@@ -5,7 +5,7 @@ Template.postAdd.rendered = function() {
   $('.addPost__editor').editable({
     inlineMode: false,
     alwaysVisible: true,
-    minHeight: 300
+    minHeight: 250
   });
 };
 
@@ -14,7 +14,7 @@ Template.postEdit.rendered = function() {
   $('.editPost__editor').editable({
     inlineMode: false,
     alwaysVisible: true,
-    minHeight: 300,
+    minHeight: 250,
     placeholder: ''
   });
 };
@@ -25,12 +25,18 @@ Template.postAdd.events({
   },
   'click .addPost__modal .confirm': function (e, t) {
     var title = t.find('.addPost__field__input').value;
-    var data = t.find('.froala-element').innerHTML;
-    var data = data.split('<p><br></p>').join('')
+    var body = t.find('.froala-element').innerHTML;
+    var body = body.split('<p><br></p>').join('');
+    var tags = $('.addPost__tags').selectize()[0].selectize.getValue().split(',');
+    var published = $('#published').is(':checked');
     var post = {
       title: title,
-      data: data,
-      date: new Date()
+      body: body,
+      date: new Date(),
+      tags: tags,
+      published: published,
+      whoLikes: [],
+      whoDislikes: []
     };
     $('.addPost__modal').css('top', '-1600px');
     Meteor.call('addPost', post);
@@ -43,8 +49,12 @@ Template.postAdd.events({
 Template.postEdit.helpers({
   getPost: function(){
     var post = Posts.findOne(this.postId);
+    window.post = post;
     $('.editPost__field__input').val(post.title);
-    $('.froala-element').html(post.data);
+    $('.froala-element').html(post.body);
+    $('.checkbox__checkbox').prop('checked', post.published)
+    $('.editPost__tags').val(post.tags).toString();
+    $('.editPost__tags').selectize()[0].selectize.getValue()
   }
 })
 
@@ -55,10 +65,13 @@ Template.postEdit.events({
   'click .editPost__modal .confirm': function (e, t) {
     var id = this.postId;
     var title = t.find('.editPost__field__input').value;
-    var data = $('.editPost .note-editable').html();
-    var data = data.split('<p><br></p>').join('')
+    var body = $('.froala-element').html();
+    var body = body.split('<p><br></p>').join('')
+    var tags = $('.editPost__tags').selectize()[0].selectize.getValue().split(',');
+    var published = $('#published').is(':checked');
     $('.editPost__modal').css('top', '-1600px');
-    Meteor.call('editPost', id, title, data);
+    Meteor.call('editPost', id, title, body, tags, published);
+    Router.go('/');
   },
   'click .editPost__modal .cancel': function (e, t) {
     $('.editPost__modal').css('top', '-1600px');

@@ -1,9 +1,10 @@
 @import '../vars-mixins'
 
 .content__body
+	max-width 1200px 
+	margin 0 auto
 	&__article
-		depth(1)
-		border-radius(2px)
+		depth(0)
 		background $white
 		padding 10px 20px
 		@media (max-width: 540px)
@@ -14,19 +15,21 @@
 			&__title
 				text-align left
 				font-size 22px 
-				font-weight 600 
+				font-weight 500 
 				line-height 30px
+				color $grey
 			&__date 
 				color $light-grey
-				line-height 26px
+				line-height 20px
 				text-align right
+				font-size 14px 
 		&__body
 			padding-bottom 10px
 			border-bottom 1px solid $border-grey
 			p
 				text-align justify
 				color $grey
-				font-size 14px
+				font-size 16px
 				margin 10px 0
 			img
 				border-radius(2px)
@@ -89,7 +92,7 @@
 							top 10px
 							font-size 16px 
 							color $grey
-							font-weight 600 
+							font-weight 500 
 							transition(color 0.4s)
 							&:hover
 								color $blue
@@ -97,33 +100,51 @@
 					width 100%
 					overflow hidden 
 					clear both
+					height 30px
 					&__buttons
 						float left
+						margin-left 10px 
 						& a
 							float left
-							margin 5px 10px
-							line-height 26px
-							color $white !important
-							height 26px
+							margin 5px 0px
+							line-height 16px
+							color $grey
 							padding 0 10px
-							background $light-teal
+							border 1px solid $border-grey
 							transition(all 0.4s) 
-							border-radius(2px)
-							depth(1)
+							//depth(1)
+							font-size 12px 
 							&:hover
-								depth(2)
-					.likes
-						float right
-						line-height 26px
-						margin 5px 10px
+								//depth(2)
 					.like, .dislike
-						width 26px
-						height 26px
-						margin 5px 10px
-						float right
-						background-size contain
-						cursor pointer
+						width 48px
+						height 20px
+						margin 5px 0px
+						float right 
+						border 1px solid $border-grey
+						.icon
+							width 20px
+							height 20px
+							float left
+							margin 0 3px
+							background-size contain
+							cursor pointer
+						.value
+							border-left 1px solid $border-grey
+							float left
+							width 20px
+							line-height 18px
+							text-align center
+							color $white
+							font-size 12px 
 					.like
-						background-image url('/icons/like.svg')
+						margin-right 10px
+						.icon
+							background-image url('/icons/like.svg')
+						.value
+							background $blue 
 					.dislike
-						background-image url('/icons/dislike.svg')
+						.icon
+							background-image url('/icons/dislike.svg')
+						.value
+							background $red

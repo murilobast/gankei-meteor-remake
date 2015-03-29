@@ -53,5 +53,19 @@ Router.route('/profile/:name', function(){
 			}
 		});
 	}
-
 })
+
+Template.body.rendered = function () {
+	$('.editPost__tags, .addPost__tags').selectize({
+	    //plugins: ['remove_button'],
+	    plugins: ['restore_on_backspace'],
+	    delimiter: ',',
+	    persist: false,
+	    create: function(input) {
+	        return {
+	            value: input,
+	            text: input
+	        }
+	    }
+	});
+};

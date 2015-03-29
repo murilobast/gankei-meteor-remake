@@ -33,7 +33,8 @@ Template.login.events({
 				password: password,
 				email: email,
 				profile: {
-				    image: '/images/default.jpg',
+					avatar: '/avatar/default.png',
+				    image: '/images/default.jpg'
 				  }
 			}, function(err){
 				if (err) {

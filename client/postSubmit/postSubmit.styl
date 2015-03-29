@@ -1,34 +1,88 @@
 @import '../vars-mixins'
 
 .addPost, .editPost
-	depth(1)
-	border-radius(2px)
+	depth(0)
 	overflow hidden
 	background #fff
 	margin-bottom 20px
+	margin-top 10px
 	padding 10px 20px
 	&__title
 		height 36px
 		line-height 36px
 		font-size 18px 
+		font-weight 500 
 	&__field
-		height 30px
-		margin-bottom 10px
+		height 50px
+		margin 10px 0
+		& *
+			float left
 		&__label
-			height 30px
-			line-height 30px
-			padding 0 10px
+			-webkit-transform translateZ(0)
+			transition(top 0.1s)
+			top 0
+			position absolute
+			left 0
 		&__input
-			border 1px solid $border-grey
-			border-radius(2px)
-			padding 0 5px
-			width 300px
+			display block
+			width 60%
+			border none
+			border-bottom 1px solid $light-grey
+			padding 0px
+			min-width 200px
+			max-width 600px
 			outline none
-			font-weight 600 
-			color $red
+			font-weight 400 
+			font-size 16px 
+			&:focus ~ label, &:valid ~ label
+				top -16px
+				font-size 14px
+				color $light-teal
+			&:focus ~ .bar:before, &:focus ~ .bar:after
+				width 50%
+		.bar
+			display block
+			width 60%
+			min-width 200px
+			max-width 600px
+			left 0
+			top 20px
+			position absolute
+			&:before, &:after
+				content ''
+				height 1px
+				width 0
+				bottom 1px
+				position absolute
+				background $light-teal
+				transition(all 0.2s ease)
+			&:before
+				left 50%
+			&:after
+				right 50%
+	.checkbox
+		width 80px 
+		float right
+		@media (max-width: 400px)
+			clear left
+			float left
+		&__checkbox
+			checkbox()
+	&__tags
+		width 100% 
+		bargin-top -5px
+		.selectize-input
+			border-radius(0)
+			border none
+			border-bottom 1px solid $light-grey
+			box-shadow none !important
+			.item
+				border-radius 0 !important
+				border none !important
+				box-shadow rgba(0,0,0,0.098) 0px 1px 2px 0px !important
+				background $blue !important
 	&__add, &__edit
-		depth(1)
-		border-radius(2px)
+		depth(0)
 		display block
 		width 80% 
 		margin 10px auto
@@ -41,11 +95,11 @@
 		&:hover
 			depth(2)
 	&__modal
-		depth(3)
-		border-radius(2px)
+		-webkit-transform translateZ(0)
+		depth(1)
 		background $white
 		padding 10px
-		width 300px
+		width 250px
 		height 90px
 		position absolute
 		top -1600px
@@ -54,13 +108,15 @@
 		right 1px
 		margin auto
 		text-align center
+		z-index 10
 		transition(all 0.4s)
+		&:hover
+			depth(3)
 		&__text
 			height 30px
 			line-height 30px
 		&__btn
-			depth(1)
-			border-radius(2px)
+			depth(0)
 			transition(all 0.4s)
 			line-height 40px
 			margin 0 10px
@@ -68,6 +124,7 @@
 			background black
 			color $white
 			cursor pointer
+			font-size 14px 
 			&:hover
 				depth(2)
 		&__btn.confirm

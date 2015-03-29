@@ -59,7 +59,8 @@ Template.crop.events({
 				highlight: true,
 				dragCrop: false,
 				movable: true,
-				resizable: true
+				resizable: true,
+				maxHeight: 240
 			})
 		}, 1000);
 	},

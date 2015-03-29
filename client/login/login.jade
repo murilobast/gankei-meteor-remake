@@ -1,14 +1,17 @@
 template(name="login")
-	form#login-form.login
-		//p.login__title Login	
-		input(type="username" placeholder='Usuário')#login-username.login__field
-		input(type="password" placeholder='Senha')#login-password.login__field
-		button(type="submit")#login-button.login__btn.login Efetuar login
-		button()#login-button.login__btn.register Criar conta
-	
-	form(id="register-form")
-		div
-			input(type="username" id="account-username")
-			input(type="password" id="account-password")
-			input(type="email" id="account-email")
-			input(type="submit" id="create-account" value="Register")
+	.loginButtons
+		form#login-form.loginButtons__form
+			label.loginButtons__form__label Usuário
+			input(type="username")#login-username.loginButtons__form__input
+			label.loginButtons__form__label Senha
+			input(type="password")#login-password.loginButtons__form__input
+			button(type="submit")#login-button.loginButtons__form__btn.login Efetuar login
+		p.loginButtons__acc Não possui conta?
+			a(href="/register" target='_top') Crie uma agora!
+		
+		//- form#register-form.register
+		//- 	div
+		//- 		input(type="username")#account-username
+		//- 		input(type="password")#account-password
+		//- 		input(type="email")#account-email
+		//- 		input(type="submit" value="Register")#create-account

@@ -1,18 +1,20 @@
 @import '../vars-mixins'
 
 .content__body__home
+	max-width 1200px
+	margin 0 auto
 	&__article
-		depth(1)
-		border-radius(2px)
+		depth(0)
 		background $white
 		padding 10px 20px
 		margin-bottom 20px
 		cursor default
 		&__header
 			&__title
+				display block
 				text-align left
 				font-size 18px 
-				font-weight 600 
+				font-weight 500 
 				line-height 20px
 				color $dark-grey
 				transition(all 0.4s)
@@ -22,6 +24,7 @@
 				color $light-grey
 				line-height 20px
 				text-align right
+				font-size 14px 
 		&__body
 			padding-bottom 10px
 			border-bottom 1px solid $border-grey
@@ -36,7 +39,7 @@
 				display block
 				width 100% !important
 				max-width 1080px 
-				min-width 300px
+				min-width 200px
 				padding-bottom 10px
 			&__freeweek
 				width 100%

@@ -2,17 +2,12 @@ template(name="posts")
 	each posts
 		+post
 
-
 template(name="post")
 	.content__body__home__article
 		.content__body__home__article__header
 			a(href='/post/{{_id}}').content__body__home__article__header__title {{title}}
 			p.content__body__home__article__header__date {{compactDate}}
 		.content__body__home__article__body
-			| {{{data}}}
+			| {{{body}}}
 		a(href='').content__body__home__article__btn.remove Remover
 		a(href='/edit/{{_id}}' target='_top').content__body__home__article__btn.edit Editar
-		a(href='').content__body__home__article__btn.comment Comentarios
-
-template(name="editor")
-	.editor

@@ -1,6 +1,3 @@
-Template.editor.rendered = function () {
-	$('.editor').summernote();
-};
 Template.posts.helpers({
 	posts: function () {
 		return Posts.find({}, {sort: {date: 'desc'}, limit: 10 });
@@ -33,5 +30,8 @@ Template.post.helpers({
 Template.post.events({
 	'click .remove': function(){
 		Meteor.call('removePost', this._id);
+	},
+	'click .comment': function(){
+		Session.set('postId', this._id);
 	}
 });

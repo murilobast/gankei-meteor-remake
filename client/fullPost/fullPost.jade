@@ -3,9 +3,9 @@ template(name="fullPost")
 		.content__body__article
 			.content__body__article__header
 				h3.content__body__article__header__title {{title}}
-				p.content__body__article__header__date {{compactDate}}
+				p.content__body__article__header__date {{compactDate}} ({{>timeago date}})
 			.content__body__article__body
-				| {{{data}}}
+				| {{{body}}}
 			.content__body__article__comments
 				.content__body__article__comments__add
 					if currentUser
@@ -26,7 +26,7 @@ template(name="comment")
 					img(src="{{profile.avatar}}").comment__body__left__avatar
 				.comment__body__right
 					a(href="/profile/{{username}}" target='_top').comment__body__right__username {{username}}
-			p.comment__body__right__date {{date}}
+			p.comment__body__right__date {{>timeago date}}
 			p.comment__body__right__text {{body}}
 		.comment__footer
 			.comment__footer__buttons
@@ -34,5 +34,8 @@ template(name="comment")
 					a(href="").comment__footer__buttons__edit Editar
 					a(href="").comment__footer__buttons__remove Deletar
 			.like
+				.icon
+				.value {{likes}}
 			.dislike
-			p.likes 0
+				.icon
+				.value {{dislikes}}

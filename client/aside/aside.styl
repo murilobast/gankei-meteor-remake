@@ -1,14 +1,16 @@
 @import '../vars-mixins'
 
 .content__side
+	float left
 	width 230px
 	position fixed
-	top 0px
+	top 0
 	bottom 0
 	float left
 	background $dark-grey
-	depth(1)
+	depth(3)
 	transition(margin 0.2s)
+	-webkit-transform translateZ(0)
 	z-index 10
 	margin-left -230px
 	overflow auto
@@ -37,11 +39,11 @@
 				height 48px
 				line-height 48px
 				color $white
-				font-weight 400
+				font-weight 300
 				&:hover
 					color $white
 	&__search
-		height 100px
+		height 80px
 		&__form
 			height 40px
 			margin 40px 0 40px 20px
@@ -71,7 +73,7 @@
 			&__title
 				color $grey-white
 				font-size 16px 
-				font-weight 400 
+				font-weight 300 
 				line-height 30px
 		&__players
 			padding-top 10px
@@ -104,19 +106,18 @@
 					font-size 10px  
 					text-align center
 					line-height 15px 
-					depth(1)
-					border-radius(2px)
+					depth(0)
 					display block
 					border solid 1px $border-grey
-					background $light-teal 
-					transition(all 0.2s)
+					//background $light-teal 
+					transition(all 0.4s)
 					&:hover
 						color $grey-white
-						depth(2)
+						depth(3)
 				&__history			
-					background #009688
+					//background #009688
 				&__match
-					background #03A9F4
+					//background #03A9F4
 @media (max-width: 1050px)
 	.content__side
 		margin-left -230px
@@ -131,8 +132,8 @@
 	top 0px
 	bottom 0
 	float left
-	background $dark-grey
-	depth(1)
+	background-color $dark-grey !important
+	depth(3)
 	transition(margin 0.2s)
 	z-index 10
 	margin-right -230px

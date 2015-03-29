@@ -2,11 +2,20 @@ template(name="postAdd")
 	.addPost
 		label.editPost__title Adicionar conteúdo
 		.addPost__field
+			input.addPost__field__input(type='text' required)
+			span.highlight
+			span.bar
 			label.addPost__field__label Título
-			input.addPost__field__input(type='text')
+			.checkbox
+				input(type="checkbox").checkbox__checkbox#published
+				label(for='published').checkbox__checkbox__label
+					span.check
+					span.box
+					span.name Publicar
 		.addPost__editor
+		label.addPost__label Tags
+		.addPost__tags
 		button(type="").addPost__add Publicar conteúdo
-
 		.addPost__modal
 			p.addPost__modal__text Confirmar envio?
 			a.addPost__modal__btn.confirm Confirmar
@@ -19,11 +28,20 @@ template(name="postEdit")
 		label.editPost__title Editar conteúdo
 		.editPost__field
 			p
+			input.editPost__field__input(type='text' required)
+			span.highlight
+			span.bar
 			label.editPost__field__label Título
-			input.editPost__field__input(type='text')
+			.checkbox
+				input(type="checkbox").checkbox__checkbox#published
+				label(for='published').checkbox__checkbox__label
+					span.check
+					span.box
+					span.name Publicado
 		.editPost__editor
-		button(type="").editPost__edit Editar conteúdo
-
+		label.editPost__label Tags
+		.editPost__tags
+		button(type="").editPost__edit Salvar alterações
 		.editPost__modal
 			p.editPost__modal__text Confirmar envio?
 			a.editPost__modal__btn.confirm Confirmar
