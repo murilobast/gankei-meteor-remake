@@ -68,4 +68,13 @@ Template.body.rendered = function () {
 	        }
 	    }
 	});
+	$("html").niceScroll({
+		zindex: 100,
+		cursorcolor: '#fff',
+		cursoropacitymin: 0.05,
+		cursoropacitymax: 0.3,
+		cursorborder: 0,
+		cursorborderradius: 0,
+		bouncescroll: true
+	})
 };

@@ -29,10 +29,11 @@ Template.header.events({
 		var right = $('.content__right');
 		if (side.css('margin-left') == '0px'){
 			side.css('margin-left', '-230px');
+			$('.header__menu').toggleClass('isOpen');
 		}else{
 			side.css('margin-left', '0px');
+			$('.header__menu').toggleClass('isOpen');
 		}
-		$('.header__menu').toggleClass('isOpen');
 		if ($(window).width() < 1051){
 			right.css('margin-right', '-230px');
 		}

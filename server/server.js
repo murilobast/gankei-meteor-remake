@@ -29,8 +29,8 @@ Meteor.methods({
 	'addPost': function(post){
 		Posts.insert(post);
 	},
-	'editPost': function(id, title, data){
-		Posts.update({_id: id}, {$set: {'title': title, 'data': data}});
+	'editPost': function(id, title, body, tags, published){
+		Posts.update({_id: id}, {$set: {'title': title, 'body': body, 'tags': tags, 'published': published}});
 	},
 	'removePost': function(id){
 		Posts.remove(id);
@@ -41,11 +41,22 @@ Meteor.methods({
 	removeComment: function(id){
 		Comments.remove(id);
 	},
-	commentLike: function(user, id, add){
-		if (add == true){
-			Comments.update({_id: id}, {$push {whoLike = user}});
+	likeComment: function(user, id, opt){
+		if (opt == 1) {
+			Comments.update({_id: id}, {$push: {'whoLikes': user}});
 		}
-	}
+		if (opt == 0) {
+			Comments.update({_id: id}, {$pull: {'whoLikes': user}});
+		}
+	},
+	dislikeComment: function(user, id, opt){
+		if (opt == 1) {
+			Comments.update({_id: id}, {$push: {'whoDislikes': user}});
+		}
+		if (opt == 0) {
+			Comments.update({_id: id}, {$pull: {'whoDislikes': user}});
+		}
+	},
 	uploadAvatar: function(image){
 		Avatar.insert(image, function (err, fileObj) {
           if (!err){
