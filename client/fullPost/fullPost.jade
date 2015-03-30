@@ -6,6 +6,11 @@ template(name="fullPost")
 				p.content__body__article__header__date {{compactDate}} ({{>timeago date}})
 			.content__body__article__body
 				| {{{body}}}
+			.content__body__article__tags
+				label.content__body__article__tags__label Tags:
+				each tags
+					.content__body__article__tags__tag
+						p {{this}}
 			.content__body__article__comments
 				.content__body__article__comments__add
 					if currentUser

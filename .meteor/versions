@@ -57,6 +57,7 @@ launch-screen@1.0.2-rc.0
 livedata@1.0.13-rc.0
 localstorage@1.0.3-rc.0
 logging@1.0.7-rc.0
+lookback:seo@1.0.1
 meteor@1.1.5-rc.0
 meteor-platform@1.2.2-rc.0
 minifiers@1.1.4-win.0
@@ -93,3 +94,4 @@ url@1.0.4-rc.0
 webapp@1.2.0-rc.1
 webapp-hashing@1.0.3-rc.0
 wollardj:timeago@1.2.0
+yasinuslu:blaze-meta@0.3.1

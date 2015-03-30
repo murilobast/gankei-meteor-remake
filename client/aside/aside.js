@@ -14,7 +14,7 @@ Template.aside.events({
 });
 
 Template.right.events({
-	'click .content__side__links__link__logout': function(){
+	'click .logout': function(){
 		Meteor.logout();
 	},
 })

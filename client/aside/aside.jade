@@ -37,9 +37,16 @@ template(name="right")
 		.content__right__user
 			if currentUser
 				.content__right__user__header
-					a(href='/profile/{{username}}') {{username}} 
+					h3.content__right__user__header__title {{username}} 
 				.content__right__user__links
-					.content__side__links__link
-						a(href='').content__side__links__link__logout Logout
+					.content__right__user__links__link
+						img(src="/icons/profile.svg").content__right__user__links__link__icon 
+						a(href='/profile/{{username}}').content__right__user__links__link__link Perfil
+					.content__right__user__links__link
+						img(src="/icons/key.svg").content__right__user__links__link__icon 
+						a(href='').content__right__user__links__link__link Mudar Senha
+					.content__right__user__links__link
+						img(src="/icons/exit.svg").content__right__user__links__link__icon 
+						a(href='/').content__right__user__links__link__link.logout Deslogar
 			else
 				+login

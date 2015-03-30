@@ -1,5 +1,8 @@
 Meteor.subscribe('comments');
 //RENDERED
+Template.fullPost.rendered = function () {
+	document.title = Session.get('title') + ' · Gankei';
+};
 Template.comment.rendered = function () {
 	
 };

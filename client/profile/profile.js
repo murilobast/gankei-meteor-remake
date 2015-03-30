@@ -1,6 +1,10 @@
 Meteor.subscribe('avatar');
 
 //RENDER
+Template.profile.rendered = function () {
+	var data = Template.currentData(this.view);
+	document.title = data.name.charAt(0).toUpperCase() + data.name.slice(1) + ' · Perfil';
+};
 Template.crop.rendered = function () {
 };
 
