@@ -5,7 +5,8 @@ Template.postAdd.rendered = function() {
   $('.addPost__editor').editable({
     inlineMode: false,
     alwaysVisible: true,
-    minHeight: 250
+    minHeight: 250,
+    maxHeight: 400
   });
 };
 
@@ -15,6 +16,7 @@ Template.postEdit.rendered = function() {
     inlineMode: false,
     alwaysVisible: true,
     minHeight: 250,
+    maxHeight: 400,
     placeholder: ''
   });
 };

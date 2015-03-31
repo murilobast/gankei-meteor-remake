@@ -8,10 +8,11 @@ template(name="login")
 			button(type="submit")#login-button.loginButtons__form__btn.login Efetuar login
 		p.loginButtons__acc Não possui conta?
 			a(href="/register" target='_top') Crie uma agora!
-		
-		//- form#register-form.register
-		//- 	div
-		//- 		input(type="username")#account-username
-		//- 		input(type="password")#account-password
-		//- 		input(type="email")#account-email
-		//- 		input(type="submit" value="Register")#create-account
+template(name="register")
+
+	form#register-form.register
+		div
+			input(type="username")#account-username
+			input(type="password")#account-password
+			input(type="email")#account-email
+			input(type="submit" value="Register")#create-account

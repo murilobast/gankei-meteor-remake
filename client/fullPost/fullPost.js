@@ -4,10 +4,12 @@ Template.fullPost.rendered = function () {
 	document.title = Session.get('title') + ' · Gankei';
 };
 Template.comment.rendered = function () {
-	
 };
 //HELPERS
 Template.fullPost.helpers({
+	avatar: function(){
+		return Meteor.user().profile.avatar;
+	},
 	postData: function(){
 		return Posts.find(this.postId);
 	},
@@ -32,7 +34,6 @@ Template.fullPost.helpers({
 		return compactDate;
 	},
 	comments: function(){
-		console.log(this._id);
 		return Comments.find({'postId': this._id}, {sort: {date: 'desc'}, limit: 10 });
 	}
 })
@@ -45,15 +46,15 @@ Template.comment.helpers({
 	owner: function(){
 		return Meteor.userId() == this.owner; //|| is admin
 	},
-	likes: function(){
+	likeCount: function(){
 		var id = this._id;
-		var likes = Comments.findOne(id).whoLikes;
-		return likes.length;
-	},
-	dislikes: function(){
-		var id = this._id;
-		var dislikes = Comments.findOne(id).whoDislikes;
-		return dislikes.length;
+		var likes = Comments.findOne(id).whoLikes.length;
+		var dislikes = Comments.findOne(id).whoDislikes.length;
+		var display = $('.comment__footer__like .value');
+		var value = likes - dislikes;
+		//value == 0 ? display.css('color', '#37474f') : value < 0 ? display.css('color', '#ff5252') : display.css('color', '#009688');
+		value = value <= 0 ? value : '+' + value;
+		return value;
 	}
 })
 
@@ -74,6 +75,7 @@ Template.fullPost.events({
 		};
 		Meteor.call('addComment', comment);
 		t.find('.content__body__article__comments__add__textarea').value = '';
+		e.preventDefault();
 	}
 })
 
@@ -93,6 +95,8 @@ Template.comment.events({
 		}else{
 			var opt = 1;
 			Meteor.call('likeComment', user, id, opt);
+			opt = 0;
+			Meteor.call('dislikeComment', user, id, opt);
 		}
 	},
 	'click .dislike': function(){
@@ -106,6 +110,8 @@ Template.comment.events({
 		}else{
 			var opt = 1;
 			Meteor.call('dislikeComment', user, id, opt);
+			opt = 0;
+			Meteor.call('likeComment', user, id, opt);
 		}
 	}
 });

@@ -25,6 +25,15 @@ Router.route('/add', {
 	}
 })
 
+Router.route('/register', {
+	seo: {
+		title: 'Cadastro'
+	},
+	action: function(){
+		this.render('register')
+	}
+})
+
 Router.route('/post/:postId', {
 	loadingTemplate: 'loading',
 	waitOn: function(){

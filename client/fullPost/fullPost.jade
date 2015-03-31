@@ -14,9 +14,11 @@ template(name="fullPost")
 			.content__body__article__comments
 				.content__body__article__comments__add
 					if currentUser
-						label.content__body__article__comments__add__label Comentários
-						textarea(placeholder="Escreva algo...").content__body__article__comments__add__textarea
-						a(href="").content__body__article__comments__add__btn Comentar
+						img(src="{{avatar}}").content__body__article__comments__add__avatar
+						textarea(required).content__body__article__comments__add__textarea
+						label.content__body__article__comments__add__label Escreva algo...
+						span.bar
+						button.content__body__article__comments__add__btn Comentar
 					else
 						label.content__body__article__comments__add__label Você precisa estar logado para poder comentar!
 				.content__body__article__comments__list
@@ -38,9 +40,9 @@ template(name="comment")
 				if owner
 					a(href="").comment__footer__buttons__edit Editar
 					a(href="").comment__footer__buttons__remove Deletar
-			.like
-				.icon
-				.value {{likes}}
-			.dislike
-				.icon
-				.value {{dislikes}}
+			.comment__footer__like
+				.like
+					.icon
+				.dislike
+					.icon
+				.value(value="{{likeCount}}") {{likeCount}}

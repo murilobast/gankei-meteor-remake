@@ -2,7 +2,7 @@
 
 .content__body
 	max-width 1200px 
-	margin 0 auto
+	margin 20px auto
 	&__article
 		depth(0)
 		background $white
@@ -38,7 +38,7 @@
 				display block
 				width 100% !important
 				max-width 1080px 
-				min-width 300px
+				min-width 280px
 				padding-bottom 10px
 		&__tags
 			overflow hidden
@@ -51,7 +51,7 @@
 				padding-right 10px
 			&__tag
 				margin 2px 0
-				float left 
+				display inline-block	
 				background $blue
 				padding 0 5px
 				color $white
@@ -68,21 +68,93 @@
 			display block
 			margin 10px auto
 			&__add
-				border-bottom 1px solid $border-grey
+				margin-top 20px
+				text-align right
+				width 500px
+				//margin 0 auto 
+				@media (max-width: 600px)
+					width 280px
+				&__avatar
+					@media (max-width: 600px)
+						width 80px
+					width 100px	
+					float left	
 				&__label
-					display block
-					font-size 16px 
-					line-height 20px
-					margin-bottom 10px
+					@media (max-width: 600px)
+						left 90px
+						font-size 14px 
+					position absolute
+					left 110px
+					color $light-grey 
+					-webkit-transform translateZ(0)
+					transition(all 0.2s)
 				&__textarea
-					width 100% 
-					border 1px solid $border-grey
-					background #eee
-					height 100px
+					text-align left
+					resize none
 					margin-bottom 10px
+					float left
+					display inline-block	 
+					width 400px	
+					height 100px
+					border none
+					border-bottom 1px solid $light-grey
 					padding 5px
 					outline none
-					border-radius(2px)
+					font-weight 400 
+					font-size 16px
+					@media (max-width: 600px)
+						width 200px 
+						height 80px
+						font-size 14px 
+					&:focus ~ label, &:valid ~ label
+						top -20px
+						@media (max-width: 600px)
+							font-size 12px
+						font-size 14px
+						color $light-teal
+					&:focus ~ .bar:before, &:focus ~ .bar:after
+						width 50%
+				.bar
+					@media (max-width: 600px)
+						width 200px
+						top 78px
+						left 80px
+					display block
+					width 400px
+					top 98px
+					left 100px
+					position absolute
+					&:before, &:after
+						content ''
+						height 2px
+						width 0
+						position absolute
+						background $light-teal
+						-webkit-transform translateZ(0)
+						transition(all 0.1s)
+					&:before
+						left 50%
+					&:after
+						right 50%
+				&__btn
+					@media (max-width: 600px)
+						width 100%
+					clear both
+					display inline-block
+					margin-bottom 20px
+					border 1px solid $border-grey
+					text-align center
+					padding 5px 20px
+					background $grey
+					color $white
+					depth(0)
+					transition(all 0.4s)
+					font-size 14px
+					font-weight 300  
+					&:hover
+						depth(2)
+			&__list
+				border-top 1px solid $border-grey
 			.comment
 				margin 20px 10px
 				overflow hidden	
@@ -133,39 +205,32 @@
 							padding 0 10px
 							border 1px solid $border-grey
 							transition(all 0.4s) 
-							//depth(1)
 							font-size 12px 
 							&:hover
-								//depth(2)
+								background $grey
+								color $white
+					&__like
+						border 1px solid $border-grey
+						display inline-block
+						float right
 					.like, .dislike
-						width 48px
+						width 20px
 						height 20px
 						margin 5px 0px
-						float right 
-						border 1px solid $border-grey
-						.icon
-							width 20px
-							height 20px
-							float left
-							margin 0 3px
-							background-size contain
-							cursor pointer
-						.value
-							border-left 1px solid $border-grey
-							float left
-							width 20px
-							line-height 18px
-							text-align center
-							color $white
-							font-size 12px 
+						float left 
+						background-size contain
+						cursor pointer
+					.value
+						float left
+						width 20px
+						margin 5px 10px
+						line-height 20px 
+						text-align right
+						color $grey
+						font-size 14px 
+						font-weight 500 
 					.like
-						margin-right 10px
-						.icon
-							background-image url('/icons/like.svg')
-						.value
-							background $blue 
+						background-image url('/icons/up.svg')
+						margin-left 5px 
 					.dislike
-						.icon
-							background-image url('/icons/dislike.svg')
-						.value
-							background $red
+						background-image url('/icons/down.svg')
