@@ -55,6 +55,22 @@ Template.comment.helpers({
 		//value == 0 ? display.css('color', '#37474f') : value < 0 ? display.css('color', '#ff5252') : display.css('color', '#009688');
 		value = value <= 0 ? value : '+' + value;
 		return value;
+	},
+	isLiked: function(){
+		var user = Meteor.userId();
+		var likes = Comments.findOne(this._id).whoLikes;
+		var opacity = likes.indexOf(user) > -1 ? opacity = 1 : opacity = 0.4;
+		return opacity;
+	},
+	isDisliked: function(){
+		var user = Meteor.userId();
+		var dislikes = Comments.findOne(this._id).whoDislikes;
+		var opacity = dislikes.indexOf(user) > -1 ? opacity = 1 : opacity = 0.4;
+		return opacity;
+	}, getColor: function(value){
+		var color = value == 0 ? color = '#37474f' : value < 0 ? color = '#ff5252' : color = '#009688';
+		console.log(color);
+		return color;
 	}
 })
 

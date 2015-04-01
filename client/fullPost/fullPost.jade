@@ -41,8 +41,8 @@ template(name="comment")
 					a(href="").comment__footer__buttons__edit Editar
 					a(href="").comment__footer__buttons__remove Deletar
 			.comment__footer__like
-				.like
+				.like(style='opacity: {{isLiked}}')
 					.icon
-				.dislike
+				.dislike(style='opacity: {{isDisliked}}')
 					.icon
-				.value(value="{{likeCount}}") {{likeCount}}
+				.value(style='color: {{getColor likeCount}}') {{likeCount}}

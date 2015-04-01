@@ -1,7 +1,18 @@
 Meteor.subscribe('img');
 
 Template.postAdd.rendered = function() {
-  //var template = this;
+  $select = $('.addPost__tags, .addPost__tags').selectize({
+      plugins: ['restore_on_backspace'],
+      delimiter: ',',
+      persist: false,
+      create: function(input) {
+          return {
+              value: input,
+              text: input
+          }
+      }
+  }); 
+  window.select = $select;
   $('.addPost__editor').editable({
     inlineMode: false,
     alwaysVisible: true,
@@ -11,7 +22,19 @@ Template.postAdd.rendered = function() {
 };
 
 Template.postEdit.rendered = function() {
-  //ar template = this;
+  var $select = $('.editPost__tags, .addPost__tags').selectize({
+      plugins: ['restore_on_backspace'],
+      delimiter: ',',
+      persist: false,
+      create: function(input) {
+          return {
+              value: input,
+              text: input
+          }
+      }
+  }); 
+  window.select = $select;
+
   $('.editPost__editor').editable({
     inlineMode: false,
     alwaysVisible: true,
@@ -42,6 +65,7 @@ Template.postAdd.events({
     };
     $('.addPost__modal').css('top', '-1600px');
     Meteor.call('addPost', post);
+    Router.go('/');
   },
   'click .addPost__modal .cancel': function (e, t) {
     $('.addPost__modal').css('top', '-1600px');
@@ -51,12 +75,13 @@ Template.postAdd.events({
 Template.postEdit.helpers({
   getPost: function(){
     var post = Posts.findOne(this.postId);
-    window.post = post;
     $('.editPost__field__input').val(post.title);
     $('.froala-element').html(post.body);
     $('.checkbox__checkbox').prop('checked', post.published)
-    $('.editPost__tags').val(post.tags).toString();
-    $('.editPost__tags').selectize()[0].selectize.getValue()
+    window.tags = post.tags;
+    tags.forEach(function(tag){
+      select[0].selectize.createItem(tag);
+    })
   }
 })
 

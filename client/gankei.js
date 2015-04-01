@@ -35,10 +35,10 @@ Router.route('/register', {
 })
 
 Router.route('/post/:postId', {
-	loadingTemplate: 'loading',
-	waitOn: function(){
+	onBeforeAction: function(pause){
 		var post = Posts.findOne(this.params.postId);
 		Session.set('title', post.title);
+		this.next();
 	},	
 	action: function(){
 		this.render('fullPost', {
@@ -46,6 +46,9 @@ Router.route('/post/:postId', {
 				postId: this.params.postId
 			}
 		});
+	},
+	onAfterAction: function(){
+		$('html, body').animate({scrollTop : 0},100);
 	}
 });
 
@@ -100,19 +103,7 @@ Router.route('/profile/:name', function(){
 // 	}
 // })
 
-Template.body.rendered = function () {
-	$('.editPost__tags, .addPost__tags').selectize({
-	    //plugins: ['remove_button'],
-	    plugins: ['restore_on_backspace'],
-	    delimiter: ',',
-	    persist: false,
-	    create: function(input) {
-	        return {
-	            value: input,
-	            text: input
-	        }
-	    }
-	});
+Template.body.rendered = function () {	
 	$("html").niceScroll({
 		zindex: 100,
 		cursorcolor: '#fff',
@@ -146,3 +137,9 @@ Router.plugin('seo',{
 	}
 
 });
+
+Router.configure({
+	progress : true,
+	progressSpinner: true,
+	progressDelay : false
+})

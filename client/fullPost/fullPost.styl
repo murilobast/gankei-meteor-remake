@@ -2,7 +2,7 @@
 
 .content__body
 	max-width 1200px 
-	margin 20px auto
+	margin 0 auto
 	&__article
 		depth(0)
 		background $white
@@ -58,6 +58,7 @@
 				margin 5px
 				depth(0)
 				transition(all 0.4s)
+				text-transform capitalize
 				&:hover
 					depth(1)
 		&__comments
@@ -69,11 +70,12 @@
 			margin 10px auto
 			&__add
 				margin-top 20px
-				text-align right
-				width 500px
-				//margin 0 auto 
+				text-align center
+				width 500px 
 				@media (max-width: 600px)
+					top 10px
 					width 280px
+					margin 0 auto
 				&__avatar
 					@media (max-width: 600px)
 						width 80px
@@ -139,6 +141,7 @@
 				&__btn
 					@media (max-width: 600px)
 						width 100%
+					width 60%
 					clear both
 					display inline-block
 					margin-bottom 20px
@@ -160,6 +163,14 @@
 				overflow hidden	
 				depth(1)
 				border-radius(2px)
+				@media (max-width: 600px)
+					margin 10px 0
+					&__body
+						&__right
+							&__username
+								font-size 14px !important
+							&__text
+								font-size 14px !important
 				&__body
 					&__left
 						width 100px
@@ -220,6 +231,8 @@
 						float left 
 						background-size contain
 						cursor pointer
+						opacity 0.4
+						transition(all 0.4s) 
 					.value
 						float left
 						width 20px
