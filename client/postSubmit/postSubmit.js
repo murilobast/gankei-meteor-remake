@@ -12,7 +12,6 @@ Template.postAdd.rendered = function() {
           }
       }
   }); 
-  window.select = $select;
   $('.addPost__editor').editable({
     inlineMode: false,
     alwaysVisible: true,
@@ -22,7 +21,7 @@ Template.postAdd.rendered = function() {
 };
 
 Template.postEdit.rendered = function() {
-  var $select = $('.editPost__tags, .addPost__tags').selectize({
+  $select = $('.editPost__tags, .addPost__tags').selectize({
       plugins: ['restore_on_backspace'],
       delimiter: ',',
       persist: false,
@@ -33,8 +32,6 @@ Template.postEdit.rendered = function() {
           }
       }
   }); 
-  window.select = $select;
-
   $('.editPost__editor').editable({
     inlineMode: false,
     alwaysVisible: true,
@@ -50,6 +47,7 @@ Template.postAdd.events({
   },
   'click .addPost__modal .confirm': function (e, t) {
     var title = t.find('.addPost__field__input').value;
+    $('.froala-element *').removeAttr('style');
     var body = t.find('.froala-element').innerHTML;
     var body = body.split('<p><br></p>').join('');
     var tags = $('.addPost__tags').selectize()[0].selectize.getValue().split(',');
@@ -77,10 +75,11 @@ Template.postEdit.helpers({
     var post = Posts.findOne(this.postId);
     $('.editPost__field__input').val(post.title);
     $('.froala-element').html(post.body);
-    $('.checkbox__checkbox').prop('checked', post.published)
-    window.tags = post.tags;
+    $('.froala-element *').removeAttr('style');
+    $('.checkbox__checkbox').prop('checked', post.published);
+    var tags = post.tags;
     tags.forEach(function(tag){
-      select[0].selectize.createItem(tag);
+      $select[0].selectize.createItem(tag);
     })
   }
 })
@@ -92,6 +91,7 @@ Template.postEdit.events({
   'click .editPost__modal .confirm': function (e, t) {
     var id = this.postId;
     var title = t.find('.editPost__field__input').value;
+    $('.froala-element *').removeAttr('style');
     var body = $('.froala-element').html();
     var body = body.split('<p><br></p>').join('')
     var tags = $('.editPost__tags').selectize()[0].selectize.getValue().split(',');
