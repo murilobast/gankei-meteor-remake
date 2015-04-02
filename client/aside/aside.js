@@ -9,6 +9,7 @@ Template.aside.events({
 		if ($('.content').width() < 1050){
 			var side = $('.content__side');
 			side.css('margin-left', '-230px');
+			$('.header__menu').toggleClass('isOpen');
 		}
 	}
 });

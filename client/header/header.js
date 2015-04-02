@@ -1,18 +1,16 @@
 Template.header.rendered = function () {
-	$(function(){
-		var addShadow = 10;
-		$(window).scroll(function() {
-			var scroll = getCurrentScroll();
-			if ( scroll >= addShadow ) {
-				$('.header').addClass('shadow');
-			}else {
-				$('.header').removeClass('shadow');
-			}
-		});
-		function getCurrentScroll() {
-			return window.pageYOffset;
+	var addShadow = 10;
+	$(window).scroll(function() {
+		var scroll = getCurrentScroll();
+		if ( scroll >= addShadow ) {
+			$('.header').addClass('shadow');
+		}else {
+			$('.header').removeClass('shadow');
 		}
 	});
+	function getCurrentScroll() {
+		return window.pageYOffset;
+	}
 };
 
 Template.header.helpers({

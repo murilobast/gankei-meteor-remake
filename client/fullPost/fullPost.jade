@@ -12,18 +12,18 @@ template(name="fullPost")
 					.content__body__article__tags__tag
 						p {{this}}
 			.content__body__article__comments
-				.content__body__article__comments__add
-					if currentUser
+				if currentUser
+					.content__body__article__comments__add
 						img(src="{{avatar}}").content__body__article__comments__add__avatar
 						textarea(required).content__body__article__comments__add__textarea
 						label.content__body__article__comments__add__label Escreva algo...
 						span.bar
 						button.content__body__article__comments__add__btn Comentar
-					else
-						label.content__body__article__comments__add__label Você precisa estar logado para poder comentar!
-				.content__body__article__comments__list
-					each comments
-						+comment
+					.content__body__article__comments__list
+						each comments
+							+comment
+				else
+					p.content__body__article__comments__add__error Você precisa estar logado para poder comentar!
 
 template(name="comment")
 	.comment

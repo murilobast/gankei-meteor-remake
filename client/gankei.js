@@ -111,7 +111,7 @@ Template.body.rendered = function () {
 		cursoropacitymax: 0.3,
 		cursorborder: 0,
 		cursorborderradius: 0,
-		mousescrollstep: 80
+		mousescrollstep: 60
 	})
 };
 
