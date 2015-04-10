@@ -1,34 +1,70 @@
 @import '../vars-mixins'
-
+.dark
+	display none
+	background black
+	opacity 0.5
+	position fixed  
+	top 0
+	bottom 0
+	right 0
+	left 0
+	z-index 4
+	&.isOpen
+		display block
 .content__side
 	float left
-	width 230px
+	width 300px
 	position fixed
 	top 0
 	bottom 0
 	float left
-	background $dark-grey
-	//background-image url('http://gankei.com/img/bg.jpg')
+	background $main-dark
 	background-size cover
 	depth(3)
 	transition(margin 0.2s)
 	-webkit-transform translateZ(0)
-	z-index 10
-	margin-left -230px
+	z-index 5
+	margin-left -300px
 	overflow auto
+	&.isOpen
+		margin-left 0px
 	&__header
 		background $red
-		height 64px
+		height 55px
 		width 100% 
+	&__server
+		&__select
+			width 100% 
+			background $main-dark
+			border-bottom 1px solid $border-grey
+			.select2-choice
+				color $white
+				font-weight 300
+				height 48px
+				line-height 48px
+				padding 0 10px
+				font-size 18px   
+				border-radius(0) !important
+				border none
+				background $main-dark
+				.select2-arrow
+					border none
+					border-radius(0)
+					background $main-dark
+					width 30px
+					b
+						background url('icons/down.svg') no-repeat
+						height 100%
+						background-position center
 	&__links
 		clear both 
 		&__item
-			background $red
+			background transparent //$red
 			border-bottom 1px solid $border-grey
 			height 48px
-			transition(all, 0.2s)
+			transition(all 0.2s)
 			&:hover
-				background  $grey
+				background  $main-light
 				transition(all, 0.2s)
 			&__icon
 				width 32px
@@ -44,135 +80,20 @@
 				font-weight 300
 				&:hover
 					color $white
-	&__search
-		height 80px
-		&__form
-			height 40px
-			margin 40px 0 40px 20px
-			&__input
-				height inherit
-				width 150px
-				float left
-				background $dark-grey
-				border 2px solid $border-grey
-				outline none
-				color $light-grey
-				text-align center
-			&__btn
-				background $light-grey
-				height 40px
-				width 40px
-				float left
-				background-image url('/icons/search-form.png')
-				background-size 60%
-				background-repeat no-repeat
-				background-position center
-	&__featured
-		padding 0 0 0 20px
-		&__header
-			height 30px
-			width 190px 
-			&__title
-				color $grey-white
-				font-size 16px 
-				font-weight 300 
-				line-height 30px
-		&__players
-			padding-top 10px
-			width 190px 
-			&__player
-				height 48px 
-				border-bottom 1px solid $border-grey
-				&__icon
-					margin 4px 0
-					width 40px
-					float left
-					border-radius(100%)
-					background $grey
-					depth(1)
-					transition(all 0.4s)
-				&__name
-					color $light-grey
-					font-size 14px 
-					width 150px
-					height 22px 
-					line-height 22px
-					text-align center
-					overflow hidden
-					float left
-				&__history, &__match
-					float left
-					width 65px
-					margin 5px
-					color $grey-white !important
-					font-size 10px  
-					text-align center
-					line-height 15px 
-					depth(0)
-					display block
-					border solid 1px $border-grey
-					//background $light-teal 
-					transition(all 0.4s)
-					&:hover
-						color $grey-white
-						depth(3)
-				&__history			
-					//background #009688
-				&__match
-					//background #03A9F4
-@media (max-width: 1050px)
-	.content__side
-		margin-left -230px
-@media (min-width: 1051px)
-	.content__side
-		margin-left 0px
-.content__right
-	@media (min-width: 1451px)
-		margin-right 0px
-	width 230px
-	position fixed
-	top 0px
-	bottom 0
-	float left
-	background-color $dark-grey
-	//background-image url('http://gankei.com/img/bg.jpg')
-	background-position left
-	depth(3)
-	transition(margin 0.2s)
-	z-index 10
-	margin-right -230px
-	overflow auto
-	right 0
-	&__header
-		background $dark-grey
-		height 64px
-		width 100% 
-	&__user
-		overflow hidden
-		background $white
-		width 230px
-		padding 10px 20px
-		&__header
-			border-bottom 1px solid $border-grey 
-			&__title
-				color $grey
-				font-size 16px
-				line-height 30px  
-				text-transform capitalize 
-				font-weight 400 
-		&__links
-			padding 5px 0
-			&__link
-				&__icon
-					vertical-align bottom 
-					display inline-block
-					width 20px
-				&__link
-					display inline-block
-					color $grey
-					font-size 15px
-					line-height 20px  
-					text-transform capitalize 
-					transition(all 0.2s)
-					&:hover
-						color $red
+.select2-drop
+	background $main-dark
+	color $white
+	border none
+	border-radius(0)
+	.select2-result
+		height 36px
+		line-height 36px
+		border-bottom 1px solid $border-grey
+		vertical-align middle
+		padding 0 10px 
+		.select2-result-label
+			height 36px
+			line-height 36px
+			vertical-align middle
+			padding 0
+			font-weight 200
