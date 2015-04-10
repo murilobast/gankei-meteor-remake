@@ -1,0 +1,48 @@
+template(name="fullPost")
+	each postData
+		.content__body__article
+			.content__body__article__header
+				h3.content__body__article__header__title {{title}}
+				p.content__body__article__header__date {{compactDate}} ({{>timeago date}})
+			.content__body__article__body
+				| {{{body}}}
+			.content__body__article__tags
+				label.content__body__article__tags__label Tags:
+				each tags
+					.content__body__article__tags__tag
+						p {{this}}
+			.content__body__article__comments
+				.content__body__article__comments__add
+					if currentUser
+						img(src="{{avatar}}").content__body__article__comments__add__avatar
+						textarea(required).content__body__article__comments__add__textarea
+						label.content__body__article__comments__add__label Escreva algo...
+						span.bar
+						button.content__body__article__comments__add__btn Comentar
+					else
+						label.content__body__article__comments__add__label Você precisa estar logado para poder comentar!
+				.content__body__article__comments__list
+					each comments
+						+comment
+
+template(name="comment")
+	.comment
+		.comment__body
+			each user
+				.comment__body__left
+					img(src="{{profile.avatar}}").comment__body__left__avatar
+				.comment__body__right
+					a(href="/profile/{{username}}" target='_top').comment__body__right__username {{username}}
+			p.comment__body__right__date {{>timeago date}}
+			p.comment__body__right__text {{body}}
+		.comment__footer
+			.comment__footer__buttons
+				if owner
+					a(href="").comment__footer__buttons__edit Editar
+					a(href="").comment__footer__buttons__remove Deletar
+			.comment__footer__like
+				.like(style='opacity: {{isLiked}}')
+					.icon
+				.dislike(style='opacity: {{isDisliked}}')
+					.icon
+				.value(style='color: {{getColor likeCount}}') {{likeCount}}

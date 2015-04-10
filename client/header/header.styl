@@ -2,22 +2,25 @@
 
 .shadow
 	depth(0)
-.action
+.header
 	top 0
-	height 56px
+	height 64px
 	width 100% 
-	background #303035
+	background $white
+	border-bottom 1px solid $border-grey
 	position fixed
-	z-index 10
-	depth(2)
+	z-index 100
+	transition(all 0.4s)
 	&__menu
+		@media (min-width: 1051px)
+			display none
 		float left
 		border none
 		background transparent 
 		z-index 1 
 		display inline-block
-		height 48px
-		width 56px
+		height 64px
+		width 48px
 		cursor pointer
 		border-radius(2px)
 		outline none
@@ -27,9 +30,9 @@
 			opacity 1 
 			.lines
 				&:before
-					top 5px
+					top 8px
 				&:after
-					top -5px
+					top -8px
 		.lines
 			line()
 			position relative
@@ -38,129 +41,118 @@
 				position absolute
 				left 0
 				content ''
-				transform-origin: 0.5px center
+				transform-origin: 2px center
 			&:before
-				top 5px
+				top 7px
 			&:after
-				top -5px
+				top -7px
 	&__menu.isOpen
+		transform(scale3d(.8,.8,.8))
 		.lines
-			width 17px
 			&:before, &:after
 				top 0
-				width 12px
+				width 20px
 			&:before
-				transform(rotate3d(0,0,1,45deg))
+				transform(rotate3d(0,0,1,40deg))
 			&:after
-				transform(rotate3d(0,0,1,-45deg))
+				transform(rotate3d(0,0,1,-40deg))
 	&__logo
 		height inherit
 		width 120px
 		float left
+		border-left 1px solid $border-grey
 		&__title
-			display block
 			font-size 24px 
-			line-height 56px
-			text-align left
-			font-weight 200
-			color $white
-			&.isOpen
-				display none
-	&__search
-		margin-right -380px
-		cursor pointer
-		transition(all 0.2s)
-		&__label
-			-webkit-transform translateZ(0)
-			transition(opacity 0.2s)
-			position absolute
-			right 0
-			line-height 36px
-			margin-top 10px
-			padding-left 26px
-			color $white 
-			font-weight 100 
-			width 80%
-			min-width 200px
-			max-width 360px
-			z-index -1
-			font-size 18px 
-			&:before
-				content ''
-				background-image url('/icons/search.svg')
-				height 24px
-				width 24px
-				display block
-				opacity 0.75
-				margin-right 10px
-				bottom 6px
-				left 0
-				position absolute
-		&__input
-			background transparent
-			position absolute
-			top 0
-			right 0
-			height 36px
-			margin 10px
-			display block
-			width 80%
-			border none
-			border-bottom 1px solid $light-grey
-			padding 0px
-			min-width 200px
-			max-width 360px
-			outline none
-			font-weight 200 
-			font-size 18px
-			padding-left 10px 
-			color $white
-			&:focus ~ label, &:valid ~ label
-				opacity 0
-			&:focus ~ .bar:before, &:focus ~ .bar:after
-				width 50%
-		.bar
-			display block
-			width 80%
-			min-width 200px
-			max-width 360px
-			right 10px
-			top 46px
-			position absolute
-			&:before, &:after
-				content ''
-				height 2px
-				width 0
-				bottom 0
-				position absolute
-				background $light-teal
-				transition(all 0.2s ease)
-				-webkit-transform translateZ(0)
-			&:before
-				left 50%
-			&:after
-				right 50%
-		.close
-			display block
-			width 24px
-			height 24px
-			background url('/icons/right.svg') 
-			z-index 10
-			position absolute
-			right 10px
-			margin 16px 0
-		&.isOpen
-			margin-right 0
-	&__searchBtn
-		height 30px
-		width 30px
-		cursor pointer
-		background url('/icons/search.svg')
-		background-size contain
+			line-height 64px
+			text-align center
+			font-weight 100
+	&__profile
+		height 64px
 		float right
-		margin 13px 10px
-		transition(all 0.2s)
-		&.isOpen
-			margin-right -56px
-		
-		
+		overflow hidden 
+		transition(all, 0.2s)
+		&__avatar
+			border-left 1px solid $border-grey
+			float left
+			width 64px
+			cursor pointer
+			&__img
+				width 42px
+				margin 11px 
+				border-radius(100%)
+		&__username
+			float left
+			height inherit
+			padding 0 10px 
+			&__text
+				line-height 64px
+				text-align center
+				vertical-align center
+		&__login
+			padding 0 10px
+			float right
+			height 64px
+			cursor pointer
+			&__header
+				height 64px
+				text-align center
+				&__icon
+					width 36px
+					margin 14px
+					margin-right 0  
+					border-radius(100%)
+					float left
+					background $light-grey
+				&__title
+					float left
+					line-height 64px
+	&__modal
+		width 180px
+		height 0px
+		overflow hidden 
+		background $white
+		border 1px solid $border-grey
+		border-top none
+		position absolute
+		z-index 10
+		right 0
+		top 64px
+		padding 0 10px
+		transition(height 0.2s)
+		&__name
+			text-transform capitalize 
+			font-weight 500 
+		&__links
+			& *
+				transition(color 0.4s)
+				text-align center
+				color $dark-grey
+				display block
+				height 20px
+				line-height 20px
+				font-size 16px 
+				&:hover
+					color $red
+		.login
+			&__title
+				font-weight 500
+				text-align left
+				line-height 20px
+				height 20px
+			&__field
+				height 24px
+				line-height 24px
+				margin 5px 0   
+				padding 0 5px
+				width 100% 
+			&__btn
+				margin-bottom 5px
+				padding 5px 10px
+				width 100% 
+				border solid 1px $border-grey
+				color $white
+			.login
+				background #03a9f4
+			.register
+				background $red
+				margin-bottom 10px

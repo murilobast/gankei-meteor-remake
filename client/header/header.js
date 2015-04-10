@@ -1,28 +1,75 @@
-Template.action.rendered = function () {
+Template.header.rendered = function () {
+	$(function(){
+		var addShadow = 10;
+		$(window).scroll(function() {
+			var scroll = getCurrentScroll();
+			if ( scroll >= addShadow ) {
+				$('.header').addClass('shadow');
+			}else {
+				$('.header').removeClass('shadow');
+			}
+		});
+		function getCurrentScroll() {
+			return window.pageYOffset;
+		}
+	});
 };
 
-Template.action.helpers({
-
+Template.header.helpers({
+	username: function(){
+		return Meteor.user().username;
+	},
+	avatar: function(){
+		return Meteor.user().profile.avatar;
+	}
 })
-Template.action.events({
-	'click .action__menu': function(){
-		var elements = $('.action__menu, .content__side, .dark')
-		elements.toggleClass('isOpen');
-	},
-	'click .action__searchBtn': function(){
-		var elements = $('.action__searchBtn, .action__search, .action__logo__title');
-		if (!elements.hasClass('isOpen')){
-			elements.addClass('isOpen');
+Template.header.events({
+	'click .header__menu': function(){
+		var side = $('.content__side');
+		var right = $('.content__right');
+		if (side.css('margin-left') == '0px'){
+			side.css('margin-left', '-230px');
+			$('.header__menu').toggleClass('isOpen');
+		}else{
+			side.css('margin-left', '0px');
+			$('.header__menu').toggleClass('isOpen');
+		}
+		if ($(window).width() < 1051){
+			right.css('margin-right', '-230px');
 		}
 	},
-	'blur .action__search__input': function(){
-		var input = $('.action__search__input');
-		if (input.val() == ""){
-			input.removeClass('isOpen');
+	'click .header__profile__avatar': function(){
+		var side = $('.content__side');
+		var right = $('.content__right');
+		var menu = $('.header__menu');
+		if (right.css('margin-right') == '-230px'){
+			right.css('margin-right', '0px');
+		}else{
+			right.css('margin-right', '-230px');
+		}
+		if ($(window).width() < 1051){
+			side.css('margin-left', '-230px');
+			if (menu.hasClass('isOpen')){
+				menu.removeClass('isOpen');
+			}
 		}
 	},
-	'click .close': function(){
-		var elements = $('.action__searchBtn, .action__search, .action__logo__title');
-		elements.removeClass('isOpen');
+	'click .header__profile__login': function(){
+		var side = $('.content__side');
+		var right = $('.content__right');
+		var menu = $('.header__menu');
+		var body = $('.content__body');
+		if (right.css('margin-right') == '-230px'){
+			right.css('margin-right', '0px');
+		}else{
+			right.css('margin-right', '-230px');
+		}
+		if ($(window).width() < 1051){
+			side.css('margin-left', '-230px');
+			body.css('left', '0px');
+			if (menu.hasClass('isOpen')){
+				menu.removeClass('isOpen');
+			}
+		}
 	}
 })

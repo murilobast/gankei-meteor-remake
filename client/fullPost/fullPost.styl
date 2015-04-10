@@ -1,0 +1,249 @@
+@import '../vars-mixins'
+
+.content__body
+	max-width 1200px 
+	margin 0 auto
+	&__article
+		depth(0)
+		background $white
+		padding 10px 20px
+		@media (max-width: 540px)
+			padding 10px
+		margin-bottom 20px
+		cursor default
+		&__header
+			&__title
+				text-align left
+				font-size 22px 
+				font-weight 500 
+				line-height 30px
+				color $grey
+			&__date 
+				color $light-grey
+				line-height 20px
+				text-align right
+				font-size 14px 
+		&__body
+			padding-bottom 10px
+			border-bottom 1px solid $border-grey
+			p
+				text-align justify
+				color $grey
+				font-size 16px
+				margin 10px 0
+			img
+				height auto
+				border-radius(2px)
+				margin 0 auto
+				display block
+				width 100% !important
+				max-width 1080px 
+				min-width 280px
+				padding-bottom 10px
+		&__tags
+			overflow hidden
+			margin 10px 20px
+			width 100% 
+			&__label
+				line-height 27px
+				vertical-align middle
+				float left
+				padding-right 10px
+			&__tag
+				margin 2px 0
+				display inline-block	
+				background $blue
+				padding 0 5px
+				color $white
+				margin 5px
+				depth(0)
+				transition(all 0.4s)
+				text-transform capitalize
+				&:hover
+					depth(1)
+		&__comments
+			width 95%
+			@media (max-width: 540px)
+				width 100%
+				margin 0 auto
+			display block
+			margin 10px auto
+			&__add
+				margin-top 20px
+				text-align center
+				width 500px 
+				@media (max-width: 600px)
+					top 10px
+					width 280px
+					margin 0 auto
+				&__avatar
+					@media (max-width: 600px)
+						width 80px
+					width 100px	
+					float left	
+				&__label
+					@media (max-width: 600px)
+						left 90px
+						font-size 14px 
+					position absolute
+					left 110px
+					color $light-grey 
+					-webkit-transform translateZ(0)
+					transition(all 0.2s)
+				&__textarea
+					text-align left
+					resize none
+					margin-bottom 10px
+					float left
+					display inline-block	 
+					width 400px	
+					height 100px
+					border none
+					border-bottom 1px solid $light-grey
+					padding 5px
+					outline none
+					font-weight 400 
+					font-size 16px
+					@media (max-width: 600px)
+						width 200px 
+						height 80px
+						font-size 14px 
+					&:focus ~ label, &:valid ~ label
+						top -20px
+						@media (max-width: 600px)
+							font-size 12px
+						font-size 14px
+						color $light-teal
+					&:focus ~ .bar:before, &:focus ~ .bar:after
+						width 50%
+				.bar
+					@media (max-width: 600px)
+						width 200px
+						top 78px
+						left 80px
+					display block
+					width 400px
+					top 98px
+					left 100px
+					position absolute
+					&:before, &:after
+						content ''
+						height 2px
+						width 0
+						position absolute
+						background $light-teal
+						-webkit-transform translateZ(0)
+						transition(all 0.1s)
+					&:before
+						left 50%
+					&:after
+						right 50%
+				&__btn
+					@media (max-width: 600px)
+						width 100%
+					width 60%
+					clear both
+					display inline-block
+					margin-bottom 20px
+					border 1px solid $border-grey
+					text-align center
+					padding 5px 20px
+					background $grey
+					color $white
+					depth(0)
+					transition(all 0.4s)
+					font-size 14px
+					font-weight 300  
+					&:hover
+						depth(2)
+			&__list
+				border-top 1px solid $border-grey
+			.comment
+				margin 20px 10px
+				overflow hidden	
+				depth(1)
+				border-radius(2px)
+				@media (max-width: 600px)
+					margin 10px 0
+					&__body
+						&__right
+							&__username
+								font-size 14px !important
+							&__text
+								font-size 14px !important
+				&__body
+					&__left
+						width 100px
+						float left 
+						margin-right 0px
+						margin-bottom -10px
+						&__avatar
+							border-radius(100%)
+							width 80%
+							margin 10%
+					&__right
+						&__date
+							margin-top 10px
+							margin-bottom -5px
+							color $light-grey
+							font-size 12px
+							display block  
+						&__text
+							padding 10px
+							text-align justify
+						&__username
+							text-transform capitalize 
+							top 10px
+							font-size 16px 
+							color $grey
+							font-weight 500 
+							transition(color 0.4s)
+							&:hover
+								color $blue
+				&__footer
+					width 100%
+					overflow hidden 
+					clear both
+					height 30px
+					&__buttons
+						float left
+						margin-left 10px 
+						& a
+							float left
+							margin 5px 0px
+							line-height 16px
+							color $grey
+							padding 0 10px
+							border 1px solid $border-grey
+							transition(all 0.4s) 
+							font-size 12px 
+							&:hover
+								background $grey
+								color $white
+					&__like
+						border 1px solid $border-grey
+						display inline-block
+						float right
+					.like, .dislike
+						width 20px
+						height 20px
+						margin 5px 0px
+						float left 
+						background-size contain
+						cursor pointer
+						opacity 0.4
+						transition(all 0.4s) 
+					.value
+						float left
+						width 20px
+						margin 5px 10px
+						line-height 20px 
+						text-align right
+						color $grey
+						font-size 14px 
+						font-weight 500 
+					.like
+						background-image url('/icons/up.svg')
+						margin-left 5px 
+					.dislike
+						background-image url('/icons/down.svg')

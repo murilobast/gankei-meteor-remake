@@ -1,0 +1,48 @@
+template(name="postAdd")
+	.addPost
+		label.editPost__title Adicionar conteúdo
+		.addPost__field
+			input.addPost__field__input(type='text' required)
+			span.highlight
+			span.bar
+			label.addPost__field__label Título
+			.checkbox
+				input(type="checkbox").checkbox__checkbox#published
+				label(for='published').checkbox__checkbox__label
+					span.check
+					span.box
+					span.name Publicar
+		.addPost__editor
+		label.addPost__label Tags
+		.addPost__tags
+		button(type="").addPost__add Publicar conteúdo
+		.addPost__modal
+			p.addPost__modal__text Confirmar envio?
+			a.addPost__modal__btn.confirm Confirmar
+			a.addPost__modal__btn.cancel Cancelar
+
+
+template(name="postEdit")
+	| {{getPost}}
+	.editPost
+		label.editPost__title Editar conteúdo
+		.editPost__field
+			p
+			input.editPost__field__input(type='text' required)
+			span.highlight
+			span.bar
+			label.editPost__field__label Título
+			.checkbox
+				input(type="checkbox").checkbox__checkbox#published
+				label(for='published').checkbox__checkbox__label
+					span.check
+					span.box
+					span.name Publicado
+		.editPost__editor
+		label.editPost__label Tags
+		.editPost__tags
+		button(type="").editPost__edit Salvar alterações
+		.editPost__modal
+			p.editPost__modal__text Confirmar envio?
+			a.editPost__modal__btn.confirm Confirmar
+			a.editPost__modal__btn.cancel Cancelar

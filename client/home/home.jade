@@ -1,25 +1,10 @@
 template(name="home")
 	.content__body__home
-		.content__body__home__article
-			.content__body__home__article__header
-				h3.content__body__home__article__header__title Featured Games
-			.content__body__home__article__featured
-				each getFeatured
-					+featured
-		.content__body__home__article
-			.content__body__home__article__header
-				h3.content__body__home__article__header__title Free Week
-			.content__body__home__article__freeweek
-				each getFreeweek
-					+freeweek
+		//each freeweek
+			+freeWeekChampion
+		+posts
 
-template(name="featured")
-	.content__body__home__article__featured__player
-		//p.content__body__home__article__featured__player__gametype {{getType gameQueueConfigId}}
-		img(src="http://ddragon.leagueoflegends.com/cdn/5.6.2/img/profileicon/{{participants.[0].profileIconId}}.png").content__body__home__article__featured__player__icon
-		p.content__body__home__article__featured__player__name {{participants.[0].summonerName}}
-
-template(name="freeweek")
-	.content__body__home__article__freeweek__champion
-		p.content__body__home__article__freeweek__champion__name {{name}}
-		img(src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/{{key}}.png").content__body__home__article__freeweek__champion__image
+template(name="freeWeekChampion")
+	.content__body__home__article__body__freeweek__champ
+		img(src="https://ddragon.leagueoflegends.com/cdn/5.5.1/img/champion/{{_id}}.png").content__body__home__article__body__freeweek__champ__img
+		p.content__body__home__article__body__freeweek__champ__name {{_id}}

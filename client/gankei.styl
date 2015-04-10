@@ -18,7 +18,8 @@ input:-webkit-autofill
 body
 	position initial
 	min-width 320px 
-	background #18181b
+	background #303035
+	background-image url('http://gankei.com/img/bg.jpg')
 	background-repeat no-repeat
 	background-size cover
 	a, a:hover, a:active
@@ -29,7 +30,20 @@ body
 	p, a, h1, h2, h3, h4, h5, label
 		margin 0
 		padding 0
-
+.content__body
+	-webkit-transform translateZ(0)
+	transition(left 0.2s)
+	top 64px
+	padding 20px
+	@media (min-width: 320px) and (max-width: 1050px)
+		padding 10px
+	@media (min-width: 1051px)
+		position absolute
+		left 230px
+		right 0
+		padding 10px
+	@media (min-width: 1451px)
+		right 230px
 #iron-router-progress
 	background-color #03A9F4
 	height 1px

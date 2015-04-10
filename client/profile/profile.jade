@@ -1,0 +1,34 @@
+template(name="profile")
+	.profile
+		.profile__header(style="background-image: url('{{profile.image}}')")
+			.profile__header__avatar
+				img(src='{{profile.avatar}}').profile__header__avatar__img
+				if isOwner
+					a(href="").profile__header__avatar__edit
+			.profile__header__info
+				.profile__header__info__name {{name}}
+			.profile__header__controls
+				if isOwner
+					.profile__header__controls__change
+		.profile__body
+			.profile__body__info
+				.profile__body__info__game
+					h3.profile__body__title Ingame info
+					//- .profile__body__info__game__basic
+					//- 	p.profile__body__info__game__basic__username summoner name
+					//- 	p.profile__body__info__game__basic__level Level 30
+					//- .profile__body__info__game__tier
+		+crop
+
+template(name="crop")
+	.profile__modal__avatar
+		.profile__modal__avatar__header
+			h3.profile__modal__avatar__header__title Alterar avatar
+		.profile__modal__avatar__body
+			label(for='avatar').profile__modal__avatar__body__label Selecionar imagem!
+			input(type="file")#avatar.profile__modal__avatar__body__upload
+			.profile__modal__avatar__body__crop
+				img(src="").profile__modal__avatar__body__crop__img
+			.profile__modal__avatar__body__btn
+				button.profile__modal__avatar__body__btn__save Aterar
+				button.profile__modal__avatar__body__btn__cancel Cancelar

@@ -1,17 +1,107 @@
+Meteor.subscribe('profile');
+
+Router.configure({
+    loadingTemplate: 'loading',
+});
+
+Router.onBeforeAction('loading');
+
+
 Router.route('/', {
 	seo: {
 		title: 'Home'
-	},
-	subscriptions: function(){
-		return Meteor.subscribe('freeweek');
-	},
-	subscriptions: function(){
-		return Meteor.subscribe('featured');
 	},
 	action: function(){
 		this.render('home')
 	}
 })
+
+Router.route('/add', {
+	seo: {
+		title: 'Criar post'
+	},
+	action: function(){
+		this.render('postAdd')
+	}
+})
+
+Router.route('/register', {
+	seo: {
+		title: 'Cadastro'
+	},
+	action: function(){
+		this.render('register')
+	}
+})
+
+Router.route('/post/:postId', {
+	onBeforeAction: function(pause){
+		var post = Posts.findOne(this.params.postId);
+		Session.set('title', post.title);
+		this.next();
+	},	
+	action: function(){
+		this.render('fullPost', {
+			data: {
+				postId: this.params.postId
+			}
+		});
+	},
+	onAfterAction: function(){
+		$('html, body').animate({scrollTop : 0},100);
+	}
+});
+
+Router.route('/edit/:postId', {
+	seo: {
+		title: 'Editar Post'
+	},
+	action: function(){
+		this.render('postEdit', {
+			data: {
+				postId: this.params.postId
+			}
+		});
+	}
+})
+
+Router.route('/profile/:name', function(){
+	var name = this.params.name;
+	if (!Meteor.users.findOne({username: name})){
+		this.render('notFound', {
+			data: {
+				user: true
+			}
+		});
+	}else{
+		var profile = Meteor.users.findOne({username: name}).profile;
+		this.render('profile', {
+			data: {
+				name: name,
+				profile: profile
+			}
+		});
+	}
+})
+
+// Router.route('/profile/:name', function(){
+// 	var name = this.params.name;
+// 	if (!Meteor.users.findOne({username: name})){
+// 		this.render('notFound', {
+// 			data: {
+// 				user: true
+// 			}
+// 		});
+// 	}else{
+// 		var profile = Meteor.users.findOne({username: name}).profile;
+// 		this.render('profile', {
+// 			data: {
+// 				name: name,
+// 				profile: profile
+// 			}
+// 		});
+// 	}
+// })
 
 Template.body.rendered = function () {	
 	$("html").niceScroll({
@@ -23,11 +113,6 @@ Template.body.rendered = function () {
 		cursorborderradius: 0,
 		mousescrollstep: 80
 	})
-	$('#select-server').select2({
-		minimumResultsForSearch: -1 
-	}).on('select2-opening',function(){
-      	$(this).siblings('.select2-container').find('.select2-search, .select2-focusser').remove()
-      })
 };
 
 Router.plugin('seo',{
