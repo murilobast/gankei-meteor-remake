@@ -50,7 +50,6 @@ iron:middleware-stack@1.0.7
 iron:router@1.0.7
 iron:url@1.0.7
 jackyqiu:meteor-jquery-nicescroll@3.6.0
-jeremy:selectize@0.12.1
 jonblum:jquery-cropper@0.9.1
 jquery@1.11.3-rc.0_2
 json@1.0.3-rc.0
@@ -71,6 +70,7 @@ mongo@1.1.0-rc.0
 mongo-livedata@1.0.8-rc.0
 mquandalle:jade@0.4.1
 multiply:iron-router-progress@1.0.1
+natestrauser:select2@3.5.1
 npm-bcrypt@0.7.8_2
 observe-sequence@1.0.5-win.0
 ordered-dict@1.0.3-rc.0
