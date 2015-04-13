@@ -3,8 +3,10 @@ template(name="home")
 		.content__body__home__article
 			.content__body__home__article__header
 				h3.content__body__home__article__header__title Featured Games
+				.content__body__home__article__header__selector
+					each getFeatureds
+						.dot
 			.content__body__home__article__featured
-				each getFeatured
 					+featured
 		.content__body__home__article
 			.content__body__home__article__header
@@ -14,12 +16,20 @@ template(name="home")
 					+freeweek
 
 template(name="featured")
-	.content__body__home__article__featured__player
-		//p.content__body__home__article__featured__player__gametype {{getType gameQueueConfigId}}
-		img(src="http://ddragon.leagueoflegends.com/cdn/5.6.2/img/profileicon/{{participants.[0].profileIconId}}.png").content__body__home__article__featured__player__icon
-		p.content__body__home__article__featured__player__name {{participants.[0].summonerName}}
+	.featured 
+		.featured__blue
+			each getBlueTeam getFeatured.participants
+				.featured__blue__player
+					img(src="http://ddragon.leagueoflegends.com/cdn/5.7.1/img/champion/{{getKey championId}}.png").featured__blue__player__icon
+					p.featured__blue__player__name {{summonerName}}
+		.featured__purple
+			each getPurpleTeam getFeatured.participants
+				.featured__purple__player
+					img(src="http://ddragon.leagueoflegends.com/cdn/5.7.1/img/champion/{{getKey championId}}.png").featured__purple__player__icon
+					p.featured__purple__player__name {{summonerName}}
+
 
 template(name="freeweek")
 	.content__body__home__article__freeweek__champion
 		p.content__body__home__article__freeweek__champion__name {{name}}
-		img(src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/{{key}}.png").content__body__home__article__freeweek__champion__image
+		img(src="http://ddragon.leagueoflegends.com/cdn/5.7.1/img/champion/{{key}}.png").content__body__home__article__freeweek__champion__image

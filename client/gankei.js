@@ -2,11 +2,11 @@ Router.route('/', {
 	seo: {
 		title: 'Home'
 	},
-	subscriptions: function(){
-		return Meteor.subscribe('freeweek');
-	},
-	subscriptions: function(){
-		return Meteor.subscribe('featured');
+	onBeforeAction: function(){
+		Meteor.subscribe('freeweek');
+		Meteor.subscribe('featured');
+		Meteor.subscribe('champions');
+		this.next();
 	},
 	action: function(){
 		this.render('home')

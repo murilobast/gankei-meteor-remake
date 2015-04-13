@@ -1,5 +1,6 @@
-getFreeweek()
-getFeatured()
+// getFreeweek()
+// getFeatured()
+// getChampions()
 
 Meteor.methods({
 	

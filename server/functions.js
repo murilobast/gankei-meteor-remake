@@ -38,3 +38,18 @@ getFeatured = function(){
 		});
 	}
 }
+
+getChampions = function(){
+	url = 'https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion?api_key=' + apiKey;
+	var featured = HTTP.get(url, function(err, champions){
+		if(champions.statusCode == 200){
+			Champions.remove({});
+			var championData = champions.data.data;
+			Object.keys(championData).forEach(function (champion) {
+				var champion = championData[champion];
+				console.log("INSERTING "+champion.name+" INTO CHAMPIONS COLLECTION");
+				Champions.insert(champion);
+			});
+		}
+	});
+}

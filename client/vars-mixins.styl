@@ -14,7 +14,12 @@ filter()
 	-moz-filter arguments
 	-o-filter arguments
 	-ms-filter arguments
-	
+speedFix()
+	-webkit-backface-visibility hidden
+    -moz-backface-visibility hidden
+    -ms-backface-visibility hidden
+    -o-backface-visibility hidden
+    backface-visibility hidden
 depth(level)
 	if level == 0
 		box-shadow rgba(0, 0, 0, 0.0980392) 0px 1px 2px 0px
@@ -45,7 +50,8 @@ line()
 	height 2px
 	background $white
 	transition(ease 0.2s)
-	-webkit-transform translateZ(0)
+	transform(translate3d(0,0,0))
+	speedFix()
 modal()
 	position fixed
 	top 1px
