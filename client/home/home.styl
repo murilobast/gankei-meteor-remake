@@ -28,21 +28,22 @@
 				&:hover
 					color $light-grey
 			&__selector
-				width 50%
 				float right
 				overflow hidden
 				.dot
 					width 20px
 					height 20px
 					margin 0 5px
-					float right
+					float left
 					background $transp-grey
 					border 1px solid $border-grey
 					text-align center
 					border-radius(50%)
 					cursor pointer
+					transition(all 0.2s)
 					&.active
-						background $gold
+						background $main-light
+						border 1px solid $transp-white
 		&__body
 			padding-bottom 10px
 			border-bottom 1px solid $border-grey
@@ -80,44 +81,83 @@
 		& .featured
 			overflow hidden
 			padding 5px
-			width 99%
+			width 100%
 			margin 5px auto
+			&__divisor
+				width 1px
+				position absolute
+				top 5px
+				bottom 5px
+				left 0
+				right 0
+				margin auto 
+				background $border-grey
+				&:before, &:after
+					content ''
+					position absolute
+					left -20px
+					right -20px
+					width 40px
+					height 1px  
+					background $border-grey
+					margin auto
+				&:after
+					bottom -1px
+				&:before
+					top -1px
 			&__blue, &__purple
-				width 50%
+				width 49%
 				&__player
 					overflow hidden
-					padding 5px
+					padding 0px
+					margin 5px 0
+					background $border-grey
 					&__icon
 						width 25%
 						display block
+						border-radius(50%)
 					&__name
-						display inline-block
-						vertical-align top 
-						font-size 0.8em 
+						margin-top 3px
+						display block
+						font-size 0.75em 
 						overflow hidden
 						-ms-text-overflow ellipsis 
 						text-overflow ellipsis 
-						width 70% 
+						width 74% 
 						color $white 
-						height 1em 
+						font-weight 300 
+					&__ranked
+						width 74%
+						position absolute
+						bottom 3px
+						font-size 0.65em 
+						color $white 
+						text-align center
+						opacity 0.7
+						font-weight 200 
+						 
 			&__blue
 				float left
 				&__player
 					&__icon
 						float right
 						clear right
-					&__name
+					&__name, &__ranked
 						text-align right
 						float left
 						clear left
+					&__ranked
+						left 0
 			&__purple
 				float right
 				&__player
 					&__icon
 						float left
 						clear left
-					&__name
+					&__name, &__ranked
 						text-align left
 						float right
 						clear right
+					&__ranked
+						right 0
 					 

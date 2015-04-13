@@ -6,6 +6,7 @@ Router.route('/', {
 		Meteor.subscribe('freeweek');
 		Meteor.subscribe('featured');
 		Meteor.subscribe('champions');
+		Meteor.subscribe('summoners');
 		this.next();
 	},
 	action: function(){

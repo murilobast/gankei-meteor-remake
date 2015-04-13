@@ -2,6 +2,10 @@ Meteor.publish("freeweek",function () {
 	return FreeWeek.find();
 });
 
+Meteor.publish("summoners",function () {
+	return Summoners.find();
+});
+
 Meteor.publish("champions",function () {
 	return Champions.find();
 });

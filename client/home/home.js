@@ -7,6 +7,13 @@ Template.home.helpers({
 		var featured = Featured.find();
 		Session.set('featured', Featured.findOne());
 		return featured;
+	},
+	isActive: function(){
+		if (this && Session.get('featured')){
+			if (this.gameId == Session.get('featured').gameId){
+				return "active"
+			}
+		}
 	}
 })
 
@@ -30,20 +37,24 @@ Template.featured.helpers({
 	},
 	getBlueTeam: function(participants){
 		blueTeam = [];
-		participants.forEach(function (participant, index) {
-			if (participant.teamId == 100){
-				blueTeam.push(participant);
-			};
-		});
+		if (participants){
+			participants.forEach(function (participant, index) {
+				if (participant.teamId == 100){
+					blueTeam.push(participant);
+				};
+			});
+		}
 		return blueTeam;
 	},
 	getPurpleTeam: function(participants){
 		purpleTeam = [];
-		participants.forEach(function (participant, index) {
-			if (participant.teamId == 200){
-				purpleTeam.push(participant);
-			}
-		});
+		if (participants){
+			participants.forEach(function (participant, index) {
+				if (participant.teamId == 200){
+					purpleTeam.push(participant);
+				}
+			});
+		}
 		return purpleTeam;
 	},
 	getKey: function(id){
@@ -55,5 +66,38 @@ Template.featured.helpers({
 	getFeatured: function(){
 		var featured = Session.get('featured');
 		return featured;
+	},
+	getRankedInfo: function(){
+		if (Summoners.findOne()){
+			var name = this.summonerName.replace(/ /g, '').toLowerCase();
+			var ranked; 
+			if (Summoners.findOne({name: name})){
+				ranked = Summoners.findOne({name: name});
+				if (ranked.tier){
+					var string = ranked.tier+' ';
+					string += ranked.division+' ';
+					string += ranked.leaguePoints+'LP';
+					return string;
+				}else{
+					return 'UNRANKED';
+				}
+			}else{
+				Meteor.call('getSummonerInfo', name, 'br', function(error, result){
+					if(error){
+						console.log(error);
+					}else{
+						ranked = Summoners.findOne({name: name});
+						if (ranked.tier){
+							var string = ranked.tier+' ';
+							string += ranked.division+' ';
+							string += ranked.leaguePoints+'LP';
+							return string;
+						}else{
+							return 'UNRANKED';
+						}
+					}
+				});
+			}
+		}
 	}
 })

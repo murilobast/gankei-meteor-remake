@@ -5,7 +5,7 @@ template(name="home")
 				h3.content__body__home__article__header__title Featured Games
 				.content__body__home__article__header__selector
 					each getFeatureds
-						.dot
+						.dot(class="{{isActive}}")
 			.content__body__home__article__featured
 					+featured
 		.content__body__home__article
@@ -20,16 +20,19 @@ template(name="featured")
 		.featured__blue
 			each getBlueTeam getFeatured.participants
 				.featured__blue__player
-					img(src="http://ddragon.leagueoflegends.com/cdn/5.7.1/img/champion/{{getKey championId}}.png").featured__blue__player__icon
+					img(src="data/champion/{{getKey championId}}.png").featured__blue__player__icon
 					p.featured__blue__player__name {{summonerName}}
+					p.featured__blue__player__ranked {{getRankedInfo}}
+		.featured__divisor
 		.featured__purple
 			each getPurpleTeam getFeatured.participants
 				.featured__purple__player
-					img(src="http://ddragon.leagueoflegends.com/cdn/5.7.1/img/champion/{{getKey championId}}.png").featured__purple__player__icon
+					img(src="data/champion/{{getKey championId}}.png").featured__purple__player__icon
 					p.featured__purple__player__name {{summonerName}}
+					p.featured__purple__player__ranked {{getRankedInfo}}
 
 
 template(name="freeweek")
 	.content__body__home__article__freeweek__champion
 		p.content__body__home__article__freeweek__champion__name {{name}}
-		img(src="http://ddragon.leagueoflegends.com/cdn/5.7.1/img/champion/{{key}}.png").content__body__home__article__freeweek__champion__image
+		img(src="data/champion/{{key}}.png").content__body__home__article__freeweek__champion__image
