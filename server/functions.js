@@ -9,39 +9,43 @@ getFreeweek = function(){
 		freeweekArray.forEach(function (champion) {
 			id = champion.id;
 			url = 'https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion/'+id+'?api_key=' + apiKey;
-			var getName = HTTP.get(url);
-			var name = getName.data.name;
-			var title = getName.data.title;
-			var key = getName.data.key;
-			var insertChampion = {
-				id: id,
-				name: name,
-				title: title,
-				key: key
-			}
-			console.log("INSERTING CHAMPION "+key+' INTO FREEWEEK DB');
-			FreeWeek.insert(insertChampion);
+			HTTP.get(url, function(err, getName) {
+				var name = getName.data.name;
+				var title = getName.data.title;
+				var key = getName.data.key;
+				var insertChampion = {
+					id: id,
+					name: name,
+					title: title,
+					key: key
+				}
+				console.log("INSERTING CHAMPION "+key+' INTO FREEWEEK DB');
+				FreeWeek.insert(insertChampion);
+			})
 		});
 	}
 }
 
 getFeatured = function(){
 	url = 'https://br.api.pvp.net/observer-mode/rest/featured?api_key=' + apiKey;
-	var featured = HTTP.get(url);
-	if(featured.statusCode == 200){
-		Featured.remove({});
-		var featuredArray = featured.data.gameList;
-		featuredArray.forEach(function (game) {
-			gameId = game.gameId;
-			console.log("INSERTING GAME "+gameId+' INTO FEATURED GAMES DB');
-			Featured.insert(game);
-		});
-	}
+	HTTP.get(url, function(err, featured){
+		if(featured.statusCode == 200){
+			Featured.remove({});
+			var featuredArray = featured.data.gameList;
+			featuredArray.forEach(function (game) {
+				var platforms = {NA1: 'na', EUW1: 'euw', EUN1: 'eune', KR: 'kr', OC1: 'oce', LA1: 'lan', LA2: 'las', BR1: 'br', RU: 'ru', TR1: 'tr', PBE1: 'pbe'};
+				game['platformId'] = platforms[game.platformId];
+				gameId = game.gameId;
+				console.log("INSERTING GAME "+gameId+' INTO FEATURED GAMES DB');
+				Featured.insert(game);
+			});
+		}
+	})
 }
 
 getChampions = function(){
 	url = 'https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion?api_key=' + apiKey;
-	var featured = HTTP.get(url, function(err, champions){
+	HTTP.get(url, function(err, champions){
 		if(champions.statusCode == 200){
 			Champions.remove({});
 			var championData = champions.data.data;

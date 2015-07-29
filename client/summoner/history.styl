@@ -1,0 +1,53 @@
+@import '../vars-mixins.styl'
+
+.content__body__summoner__article__matches
+	&__match
+		margin 5px auto
+		width 98%
+		overflow hidden
+		&__header
+			height 20px 
+			boirder-bottom 1px solid $border-grey
+			background $main-semi
+			&__text
+				float left
+				width 33% 
+				text-align center
+				color $white
+				font-size 14px
+				font-weight 200 
+				line-height 20px  
+		&__stats
+			overflow hidden
+			&__champion
+				text-align center
+				overflow hidden
+				float left
+				width 30% 
+				&__icon
+					width 100% 
+					float left
+				&__name
+					line-height 20px
+					font-size 12px
+					position absolute
+					bottom 36px
+					width 100% 
+					color $white
+					background $transp-grey
+					z-index 1 
+				&__spells
+					clear both
+					width 100%
+					height 36px     
+					&__icon
+						width 36px 
+						display inline-block
+			&__info
+				float left
+				width 20% 
+				overflow hidden
+			&__items
+				float left
+				width 50% 
+				overflow hidden

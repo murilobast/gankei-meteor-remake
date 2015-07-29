@@ -19,18 +19,23 @@ template(name="featured")
 	.featured 
 		.featured__blue
 			each getBlueTeam getFeatured.participants
-				.featured__blue__player
-					img(src="data/champion/{{getKey championId}}.png").featured__blue__player__icon
-					p.featured__blue__player__name {{summonerName}}
-					p.featured__blue__player__ranked {{getRankedInfo}}
+				a(href='/summoner/br/{{name}}')
+					.featured__blue__player
+						if getKey championId
+							img(src="data/champion/{{getKey championId}}.png").featured__blue__player__icon
+						p.featured__blue__player__name {{summonerName}}
+						p.featured__blue__player__ranked {{getRankedInfo}}
 		.featured__divisor
 		.featured__purple
 			each getPurpleTeam getFeatured.participants
-				.featured__purple__player
-					img(src="data/champion/{{getKey championId}}.png").featured__purple__player__icon
-					p.featured__purple__player__name {{summonerName}}
-					p.featured__purple__player__ranked {{getRankedInfo}}
-
+				a(href='/summoner/br/{{name}}')
+					.featured__purple__player
+						if getKey championId
+							img(src="data/champion/{{getKey championId}}.png").featured__purple__player__icon
+						p.featured__purple__player__name {{summonerName}}
+						p.featured__purple__player__ranked {{getRankedInfo}}
+		.featured__footer
+			a(href="/summoner").featured__footer__matchInfo.ripplelink Match Info
 
 template(name="freeweek")
 	.content__body__home__article__freeweek__champion

@@ -11,5 +11,5 @@ Meteor.publish("champions",function () {
 });
 
 Meteor.publish("featured",function () {
-	return Featured.find({}, {fields: {'participants': 1, 'gameId': 1, 'gameQueueConfigId': 1}});
+	return Featured.find({}, {fields: {'participants': 1, 'gameId': 1, 'gameQueueConfigId': 1, 'platformId': 1}});
 });

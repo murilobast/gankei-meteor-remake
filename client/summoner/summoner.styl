@@ -1,0 +1,153 @@
+@import '../vars-mixins.styl'
+
+.content__header
+	background $main-semi
+	top 56px
+	left 0
+	right 0
+	height 36px
+	width 100% 
+	max-width 1080px  
+	min-width 320px 
+	margin auto
+	position fixed
+	z-index 4 
+	box-shadow 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+	&__selectors
+		height inherit
+		overflow-y hidden
+		height 36px 	 
+		&__selector
+			overflow hidden
+			color $gold
+			width 33%
+			display block
+			float left 
+			line-height 34px 
+			text-transform uppercase
+			font-size 13px 
+			text-align center
+			transition(all 0.2s)
+			&.active
+				border-bottom 2px solid $gold
+				
+.content__body__summoner
+	margin-top 92px
+	&__article
+		&__ranked
+			padding 0 5px
+			overflow hidden
+			width 100% 
+			padding-bottom 10px
+			&__title
+				color $gold
+				display block
+				text-align center
+				margin-bottom -10px
+				margin-top 5px
+				line-height 20px  
+			&__solo
+				float left
+				text-align center
+				width 40% 
+				&__img
+					width 100% 
+					clear both
+					display block
+				&__info
+					margin-top -20px 
+					width 80%
+					display inline-block 
+					& p
+						font-weight 300 
+					&__name
+						color $gold
+					&__tier
+						color $white
+						text-transform uppercase
+			&__team3, &__team5
+				float left
+				width 30% 
+				// margin-top 40px 
+				text-align center
+				&__img
+					width 100% 
+					clear both
+					display block
+				&__info
+					margin-top -10px 
+					width 80%
+					display inline-block 
+					clear both
+					& p
+						font-weight 300 
+						font-size 12px 
+					&__name
+						color $gold
+					&__tier
+						color $white
+						text-transform uppercase
+		&__info
+			padding 5px
+			overflow hidden
+			width 100%
+			padding-bottom 10px
+			border-bottom 1px solid $border-grey
+			&__pIcon
+				width 30% 
+				float left
+				display block
+			&__name
+				width 70%
+				float left
+				display inline-block
+				color $white 
+				padding 10px
+				&__text
+					font-weight 200
+					line-height 30px
+					text-align center  
+		&__champions
+			padding 5px
+			overflow hidden
+			width 100%
+			padding-bottom 10px
+			border-bottom 1px solid $border-grey
+			&__title
+				color $gold
+				display block
+				text-align center
+				line-height 20px 
+			&__mostplayed
+				margin-top 5px
+				width 100%
+				display block
+				clear both
+				overflow hidden
+				text-align center
+				&__champion
+					margin 0 1%
+					width 22%
+					display inline-block
+					&__icon
+						width 100% 
+					&__name
+						line-height 20px
+						height 20px
+						font-size 10px
+						color $white
+						width 100%
+						top -24px   
+						background $transp-grey
+					&__kda, &__win, &__lose, &__percent
+						font-size 12px 
+						color $white
+					&__kda
+						margin-top -20px
+					&__win, &__lose
+						width 50%
+						float left 
+					&__win
+						color $light-teal
+					&__lose
+						color $red		

@@ -68,36 +68,26 @@ Template.featured.helpers({
 		return featured;
 	},
 	getRankedInfo: function(){
-		if (Summoners.findOne()){
+		if (this.summonerName){
 			var name = this.summonerName.replace(/ /g, '').toLowerCase();
-			var ranked; 
+			var region = Session.get('featured').platformId;
+			var summoner; 
 			if (Summoners.findOne({name: name})){
-				ranked = Summoners.findOne({name: name});
-				if (ranked.tier){
-					var string = ranked.tier+' ';
-					string += ranked.division+' ';
-					string += ranked.leaguePoints+'LP';
+				summoner = Summoners.findOne({name: name});
+				if (summoner.solo){
+					var string = summoner.solo.tier+' ';
+					string += summoner.solo.division+' ';
+					string += ' - '+summoner.solo.lp+'LP';
 					return string;
 				}else{
 					return 'UNRANKED';
 				}
 			}else{
-				Meteor.call('getSummonerInfo', name, 'br', function(error, result){
-					if(error){
-						console.log(error);
-					}else{
-						ranked = Summoners.findOne({name: name});
-						if (ranked.tier){
-							var string = ranked.tier+' ';
-							string += ranked.division+' ';
-							string += ranked.leaguePoints+'LP';
-							return string;
-						}else{
-							return 'UNRANKED';
-						}
-					}
-				});
+				// Meteor.call('getSummonerInfo', name, region);
 			}
 		}
+	},
+	name: function(){
+		return this.summonerName.replace(/ /g, '').toLowerCase();
 	}
 })

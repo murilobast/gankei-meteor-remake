@@ -1,0 +1,26 @@
+template(name="history")
+	if id
+		.content__body__summoner__article__header
+			h3.content__body__summoner__article__header__title History
+		.content__body__summoner__article__matches
+			+historyMatch		
+			+historyMatch		
+			+historyMatch		
+	
+
+template(name="historyMatch")
+	.content__body__summoner__article__matches__match(style="background: url('');")
+		.content__body__summoner__article__matches__match__header
+			h3.content__body__summoner__article__matches__match__header__text RANKED SOLO
+			h3.content__body__summoner__article__matches__match__header__text 1 DAY AGO
+			h3.content__body__summoner__article__matches__match__header__text WIN
+		.content__body__summoner__article__matches__match__stats(style="background: rgba(0, 71, 77, 0.25);")
+			.content__body__summoner__article__matches__match__stats__champion
+				img(src="/data/champion/KogMaw.png").content__body__summoner__article__matches__match__stats__champion__icon
+				p.content__body__summoner__article__matches__match__stats__champion__name Kog Maw
+				.content__body__summoner__article__matches__match__stats__champion__spells
+					img(src="/spell/4.png").content__body__summoner__article__matches__match__stats__champion__spells__icon
+					img(src="/spell/7.png").content__body__summoner__article__matches__match__stats__champion__spells__icon
+			.content__body__summoner__article__matches__match__stats__info
+			.content__body__summoner__article__matches__match__stats__items
+		

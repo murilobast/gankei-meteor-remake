@@ -1,0 +1,58 @@
+template(name="overview")
+	if id
+		.content__body__summoner__article__header
+			h3.content__body__summoner__article__header__title Overview
+		.content__body__summoner__article__info
+			img(src="/data/profileicon/{{icon}}.png").content__body__summoner__article__info__pIcon
+			.content__body__summoner__article__info__name
+				.content__body__summoner__article__info__name__text {{fullName}}
+				.content__body__summoner__article__info__name__text Level {{level}}
+
+		.content__body__summoner__article__champions
+			.content__body__summoner__article__champions__title Most played champions
+			.content__body__summoner__article__champions__mostplayed
+				each getChampions
+					+summonerChampion
+
+		.content__body__summoner__article__ranked
+			.content__body__summoner__article__ranked__title Ranked
+			.content__body__summoner__article__ranked__team3
+				if team3.division
+					img(src="/tier/{{team3.tier}}_{{team3.division}}.png").content__body__summoner__article__ranked__team3__img
+				else
+					img(src="/tier/unranked.png").content__body__summoner__article__ranked__team3__img
+				.content__body__summoner__article__ranked__team3__info
+					p.content__body__summoner__article__ranked__team3__info__name Team 3v3
+					p.content__body__summoner__article__ranked__team3__info__tier {{team3.tier}} {{team3.division}}
+					p.content__body__summoner__article__ranked__team3__info__pdl.muted {{team3.lp}} Pdl
+			.content__body__summoner__article__ranked__solo
+				if solo.division
+					img(src="/tier/{{solo.tier}}_{{solo.division}}.png").content__body__summoner__article__ranked__solo__img
+				else
+					img(src="/tier/unranked.png").content__body__summoner__article__ranked__solo__img
+				.content__body__summoner__article__ranked__solo__info
+					p.content__body__summoner__article__ranked__solo__info__name Solo/Duo
+					p.content__body__summoner__article__ranked__solo__info__tier {{solo.tier}} {{solo.division}}
+					p.content__body__summoner__article__ranked__solo__info__pdl.muted {{solo.lp}} Pdl
+			.content__body__summoner__article__ranked__team3
+				if team5.division
+					img(src="/tier/{{team5.tier}}_{{team5.division}}.png").content__body__summoner__article__ranked__team5__img
+				else
+					img(src="/tier/unranked.png").content__body__summoner__article__ranked__team5__img
+				.content__body__summoner__article__ranked__team5__info
+					p.content__body__summoner__article__ranked__team5__info__name Team 5v5
+					p.content__body__summoner__article__ranked__team5__info__tier {{team5.tier}} {{team5.division}}
+					p.content__body__summoner__article__ranked__team5__info__pdl.muted {{team5.lp}} Pdl
+	else
+		//- if dontExist
+		//- 	.content__body__summoner__article__header
+		//- 		h3.content__body__summoner__article__header__title DON'T EXIST
+
+template(name="summonerChampion")
+	.content__body__summoner__article__champions__mostplayed__champion
+		img(src="/data/champion/{{getKey id}}.png").content__body__summoner__article__champions__mostplayed__champion__icon
+		.content__body__summoner__article__champions__mostplayed__champion__name {{getName id}}
+		.content__body__summoner__article__champions__mostplayed__champion__kda {{getKDA}}
+		.content__body__summoner__article__champions__mostplayed__champion__win W: {{stats.totalSessionsWon}}
+		.content__body__summoner__article__champions__mostplayed__champion__lose L: {{stats.totalSessionsLost}}
+		.content__body__summoner__article__champions__mostplayed__champion__percent ({{getRate}}%)

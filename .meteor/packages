@@ -5,23 +5,17 @@
 # but you can also edit it by hand.
 
 meteor-platform
-insecure
 http
 mquandalle:jade
-stylus
 accounts-base
 accounts-password
 jquery
 iron:router
-cfs:standard-packages
-cfs:filesystem
-jonblum:jquery-cropper
-froala:editor
 wollardj:timeago
 rzymek:moment-locale-pt-br
-archive:jquery-dotdotdot
 jackyqiu:meteor-jquery-nicescroll
 lookback:seo
 multiply:iron-router-progress
 citizenkevin:medium-editor
 natestrauser:select2
+cryptoquick:stylus-multi

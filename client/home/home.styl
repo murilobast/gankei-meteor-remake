@@ -1,16 +1,17 @@
 @import '../vars-mixins'
 
-.content__body__home
+.content__body__home, .content__body__summoner
 	min-width 320px 
-	max-width 1200px
+	max-width 1080px
 	margin 0 auto
 	margin-top 56px
-	padding 20px 10px
+	padding 10px 5px
 	&__article
 		depth(0)
 		background $main-dark
 		cursor default
-		margin-bottom 20px
+		margin-bottom 10px
+		border-radius(2px)
 		&__header
 			padding 5px 10px
 			border-bottom 1px solid $border-grey
@@ -25,15 +26,13 @@
 				transition(all 0.4s)
 				width 50%
 				float left
-				&:hover
-					color $light-grey
 			&__selector
 				float right
 				overflow hidden
 				.dot
 					width 20px
 					height 20px
-					margin 0 5px
+					margin 0 3px
 					float left
 					background $transp-grey
 					border 1px solid $border-grey
@@ -87,7 +86,7 @@
 				width 1px
 				position absolute
 				top 5px
-				bottom 5px
+				bottom 25px
 				left 0
 				right 0
 				margin auto 
@@ -113,24 +112,25 @@
 					margin 5px 0
 					background $border-grey
 					&__icon
-						width 25%
+						margin 5px 4px
+						width 23%
 						display block
 						border-radius(50%)
 					&__name
-						margin-top 3px
+						margin-top 8px
 						display block
-						font-size 0.75em 
+						font-size 12px
 						overflow hidden
 						-ms-text-overflow ellipsis 
 						text-overflow ellipsis 
-						width 74% 
+						width 71% 
 						color $white 
 						font-weight 300 
 					&__ranked
-						width 74%
+						font-size 9px 
+						width 71%
 						position absolute
-						bottom 3px
-						font-size 0.65em 
+						bottom 8px
 						color $white 
 						text-align center
 						opacity 0.7
@@ -160,4 +160,17 @@
 						clear right
 					&__ranked
 						right 0
-					 
+			&__footer
+				clear both
+				width 100% 
+				height 20px 
+				overflow hidden
+				&__matchInfo
+					color $gold
+					float right
+					line-height 20px
+					font-size 14px
+					margin-right 5px
+					transition(all 0.2s) 
+					&:active
+						color $white

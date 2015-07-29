@@ -1,0 +1,15 @@
+template(name="summoner")
+	.content__header {{test}}
+		.content__header__selectors
+			a(href="" class="{{isActive 'overview'}}" name="overview").content__header__selectors__selector Overview 
+			a(href="" class="{{isActive 'history'}}" name="history").content__header__selectors__selector Match History
+			a(href="" class="{{isActive 'active'}}" name="active").content__header__selectors__selector Active Match
+
+	.content__body__summoner
+		.content__body__summoner__article
+			if getTab 'overview'
+				+overview
+			else if getTab 'history'
+				+history
+			else if getTab 'active'
+				+active
