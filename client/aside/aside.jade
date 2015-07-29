@@ -1,52 +1,23 @@
 template(name="aside")
+	.dark
 	aside.content__side
 		.content__side__header
+		.content__side__server
+			select.content__side__server__select#select-server
+				option(value="br") Brasil
+				option(value="eune") EU Nordic & East
+				option(value="euw") EU West
+				option(value="kr") Republic of Korea
+				option(value="lan") Latin America North
+				option(value="las") Latin America South
+				option(value="na") North America
+				option(value="oce") Oceania
+				option(value="ru") Russia
+				option(value="tr") Turkey
 		.content__side__links
 			.content__side__links__item
 				img(src="/icons/home.png").content__side__links__item__icon
 				a(href="/").content__side__links__item__link Home
-			.content__side__links__item
-				img(src="/icons/post.svg").content__side__links__item__icon
-				a(href="/add" target='_top').content__side__links__item__link Postar
-			.content__side__links__item
-				img(src="/icons/search.png").content__side__links__item__icon
-				a(href="#").content__side__links__item__link Search
-		.content__side__search
-			form.content__side__search__form
-				input(type="text" placeholder='Nome de Invocador').content__side__search__form__input
-				a(href="").content__side__search__form__btn
-		.content__side__featured
-			.content__side__featured__header
-				h3.content__side__featured__header__title Destaques
-			.content__side__featured__players
-				+player
-				+player
-				+player
-				+player
-					
-template(name="player")
-	.content__side__featured__players__player
-		img(src='http://lpuboosting.com/img/general/ranks/challenger.png').content__side__featured__players__player__icon
-		p.content__side__featured__players__player__name Player Name
-		a(href="").content__side__featured__players__player__history Histórico
-		a(href="").content__side__featured__players__player__match Partida
 
 template(name="right")
 	aside.content__right
-		.content__right__header
-		.content__right__user
-			if currentUser
-				.content__right__user__header
-					h3.content__right__user__header__title {{username}} 
-				.content__right__user__links
-					.content__right__user__links__link
-						img(src="/icons/profile.svg").content__right__user__links__link__icon 
-						a(href='/profile/{{username}}').content__right__user__links__link__link Perfil
-					.content__right__user__links__link
-						img(src="/icons/key.svg").content__right__user__links__link__icon 
-						a(href='').content__right__user__links__link__link Mudar Senha
-					.content__right__user__links__link
-						img(src="/icons/exit.svg").content__right__user__links__link__icon 
-						a(href='/').content__right__user__links__link__link.logout Deslogar
-			else
-				+login

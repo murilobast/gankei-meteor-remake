@@ -1,17 +1,16 @@
-template(name="header")
-	header.header
-		button.header__menu(type="button" role="button" aria-label="Toggle Navigation")
+template(name="action")
+	header.action
+		button.action__menu(type="button" role="button" aria-label="Toggle Navigation")
 			span.lines
+		.action__logo
+			h1.action__logo__title Gankei
+		form.action__search
+			.back
+			input.action__search__input.name(type='text' name='name' required)
+			span.highlight
+			span.bar
+			label.action__search__label Nome de Invocador
+			.close
+		.action__searchBtn
 
-
-		.header__logo
-			h1.header__logo__title Gankei
-		.header__profile
-			if currentUser
-				.header__profile__avatar
-					img(src="{{avatar}}").header__profile__avatar__img
-			else
-				.header__profile__login
-					.header__profile__login__header
-						a(href="").header__profile__login__header__title Login
-						img(src='/icons/login.png').header__profile__login__header__icon
+		
